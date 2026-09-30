@@ -1,0 +1,136 @@
+.opt-morph-label {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  flex: none;
+  max-width: 100%;
+  will-change: width;
+}
+.opt-morph-label-measure,
+.opt-morph-label-layer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  white-space: nowrap;
+  line-height: 20px;
+}
+.opt-morph-label-measure {
+  visibility: hidden;
+  flex: none;
+  width: max-content;
+  pointer-events: none;
+}
+.opt-morph-label-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.opt-morph-glyph {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+.opt-system .opt-button[data-morph] {
+  transition:
+    background 0.22s,
+    border-radius 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+.opt-system .opt-button[data-morph][data-pending] {
+  border-radius: 24px;
+  opacity: 1;
+}
+.opt-system .opt-button[data-complete] {
+  border-radius: 24px;
+  box-shadow:
+    inset 0 0 0 1px #ffffff18,
+    0 2px 4px #0002;
+}
+.opt-system .opt-button[data-morph] .opt-button-spinner {
+  display: none;
+}
+.opt-system .opt-button[data-morph] .opt-spin {
+  width: 17px;
+  height: 17px;
+}
+.opt-system .opt-icon-button {
+  transition:
+    border-radius 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.2s,
+    transform 0.2s;
+}
+.opt-system .opt-icon-button[aria-pressed='true'] {
+  border-radius: 50%;
+  background: var(--opt-accent);
+  color: var(--opt-solid-ink);
+}
+.opt-system .opt-icon-button[aria-pressed='true'] svg {
+  fill: currentColor;
+  stroke-width: 1.3;
+}
+.opt-system .opt-checkbox {
+  transition:
+    border-radius 0.3s,
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.opt-system .opt-checkbox[data-checked] {
+  border-radius: 9px;
+}
+.opt-system .opt-switch:active:not([data-disabled]) .opt-switch-thumb {
+  border-radius: 12px 8px 8px 12px;
+}
+.opt-system
+  .opt-switch[data-checked]:active:not([data-disabled])
+  .opt-switch-thumb {
+  border-radius: 8px 12px 12px 8px;
+}
+.opt-system .opt-slider-thumb {
+  transition:
+    border-radius 0.25s,
+    scale 0.2s,
+    box-shadow 0.2s;
+}
+.opt-system .opt-slider-thumb[data-dragging] {
+  border-radius: 7px;
+  scale: 1.08;
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-morph-label,
+  .opt-morph-label * {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .opt-system .opt-button,
+  .opt-system .opt-icon-button,
+  .opt-system .opt-checkbox,
+  .opt-system .opt-slider-thumb {
+    transition: none !important;
+  }
+}
+
+.opt-action-glyph {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.opt-action-glyph[data-state='working'] path {
+  stroke-dasharray: 10 4;
+  animation: opt-action-trace 800ms linear infinite;
+}
+@keyframes opt-action-trace {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-action-glyph[data-state='working'] path {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}

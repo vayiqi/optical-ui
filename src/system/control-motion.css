@@ -1,0 +1,70 @@
+/* Shared control feedback. */
+.opt-system .opt-button-spinner {
+  display: grid;
+  grid-template-columns: 0fr;
+  opacity: 0;
+  margin-right: -9px;
+  transition:
+    grid-template-columns 0.3s var(--opt-ease),
+    opacity 0.18s,
+    margin 0.3s var(--opt-ease);
+}
+.opt-system .opt-button-spinner > span {
+  overflow: hidden;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+.opt-system .opt-button-spinner svg {
+  width: 17px;
+  height: 17px;
+}
+.opt-system .opt-button[data-pending] {
+  opacity: 0.8;
+  cursor: wait;
+}
+.opt-system .opt-button[data-pending] .opt-button-spinner {
+  grid-template-columns: 1fr;
+  opacity: 1;
+  margin-right: 0;
+}
+.opt-system .opt-segment {
+  background: var(--opt-wash);
+  border-color: var(--opt-line);
+  border-radius: min(var(--opt-radius), 14px);
+  box-shadow: none;
+  position: relative;
+  isolation: isolate;
+  gap: 2px;
+}
+.opt-system .opt-segment-item {
+  border-radius: 10px;
+  position: relative;
+  isolation: isolate;
+  padding: 8px 15px;
+  font-size: 14px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.opt-system .opt-segment-item[data-checked] {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.opt-system .opt-segment-label {
+  position: relative;
+  z-index: 1;
+}
+.opt-system .opt-segment-indicator {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border: 1px solid var(--opt-line);
+  border-radius: 10px;
+  background: var(--opt-raised);
+  box-shadow: 0 2px 3px #00000006;
+}
+
+.opt-system{--opt-solid-ink:var(--opt-on-accent)}
+@media(prefers-reduced-motion:reduce){.opt-system .opt-button-spinner{transition:none}.opt-system .opt-segment-indicator{transition:none}}

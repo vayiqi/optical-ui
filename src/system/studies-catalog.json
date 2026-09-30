@@ -1,0 +1,12 @@
+[
+["precision-fader","Precision fader","Instruments","Three channels, one balance","Adjust three vertical faders independently with pointer or keyboard."],
+["step-slider","Stepped slider","Instruments","A considered interval","Choose one of five marked stops with precise keyboard and pointer control."],
+["timeline-wheel","Timeline wheel","Instruments","Turn through time","Scrub a timeline, move one frame at a time, and keep a selected moment."],
+["glass-shutter","Glass shutter","Optics","Light through a seam","Open two fluted glass panels to reveal a sculptural object."],
+["focus-lens","Focus lens","Optics","A closer look","Move a clear inspection lens over a diffused pattern using a pointer or arrow keys."],
+["contact-sheet","Contact sheet","Folio","The whole collection","Select prints individually or together, then clear the selection."],
+["selection-tray","Selection tray","Folio","Gather and arrange","Add objects to a tray, reorder them, remove them, and undo a removal."],
+["collection-stack","Collection stack","Folio","Room to unfold","Expand a layered collection into a contact sheet and open a selected piece."],
+["version-rail","Version rail","Trace","A visible history","Compare three revisions, keep a direction, and undo the commitment."],
+["transform-pad","Transform pad","Contour","A surface to shape","Move an object in two dimensions, adjust its scale, change its material, and reset."]
+]

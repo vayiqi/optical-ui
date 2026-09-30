@@ -1,0 +1,739 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Press — Optical UI</title><style>:root{color-scheme:light}body{margin:0;background:#fafaf8;color:#453b35;font-family:Arial,Helvetica,sans-serif}body>nav{display:flex;justify-content:space-between;align-items:center;max-width:570px;margin:20px auto;padding:0 20px;font-size:14px}a{color:inherit}select{font:inherit;padding:10px;border:1px solid #ccc;background:#fff;border-radius:6px}button{cursor:pointer}svg{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}button:focus-visible,input:focus-visible{outline:2px solid #753b2d;outline-offset:4px}[hidden]{display:none!important}</style></head><body><nav id="study-navigation"><a href="https://deepcake.ai/opticalui" target="_top">Deepcake / UI</a><label>Study <select id="study-select"><option>Pocket</option><option>Spool</option><option>Index</option><option>Press</option></select></label></nav><style>
+#ui-four-fresh .uf-stage{height:650px;display:flex;align-items:center;justify-content:center;padding:20px 12px;box-sizing:border-box;position:relative}
+#ui-four-fresh .uf{--u-radius:8px;--u-bg:light-dark(#f2f0e9,#242722);--u-paper:light-dark(#fcfbf6,#30342d);--u-ink:light-dark(#292e24,#eef0e7);--u-muted:light-dark(#6c7064,#b4b9ab);--u-line:light-dark(#d8dbcf,#4b5145);--u-shadow:light-dark(#23301921,#00000050);--u-sage:light-dark(#dce2c4,#414d30);--u-orange:light-dark(#c84622,#ff976b);width:100%;max-width:570px;box-sizing:border-box;color:var(--u-ink);font:14px/1.4 Arial,Helvetica,sans-serif}
+#ui-four-fresh .uf *{box-sizing:border-box}
+#ui-four-fresh .uf [hidden]{display:none!important}
+#ui-four-fresh .uf button,#ui-four-fresh .uf input{font:inherit;color:inherit}
+#ui-four-fresh .uf button{min-height:44px;border:0;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 15px;background:transparent;border-radius:var(--u-radius);transition:transform .2s,background .2s,box-shadow .2s}
+#ui-four-fresh .uf button:active{transform:translateY(1px)}
+#ui-four-fresh .uf button:disabled{cursor:default;opacity:.5}
+#ui-four-fresh .uf svg{width:16px;height:16px;flex:none}
+#ui-four-fresh .uf-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 4px;margin-bottom:18px}
+#ui-four-fresh .uf-name{font-size:23px;letter-spacing:-1px;font-weight:500;display:flex;align-items:baseline;gap:10px}
+#ui-four-fresh .uf-number{font:11px ui-monospace,SFMono-Regular,monospace;color:var(--u-muted);letter-spacing:0}
+#ui-four-fresh .uf-category{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--u-muted)}
+#ui-four-fresh .uf-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:15px 4px 0;font-size:12px;color:var(--u-muted);min-height:20px}
+#ui-four-fresh .uf-mono{font-family:ui-monospace,SFMono-Regular,monospace;font-variant-numeric:tabular-nums}
+#ui-four-fresh .uf-panel{background:var(--u-bg);border:1px solid var(--u-line);box-shadow:0 16px 38px -20px var(--u-shadow),inset 0 1px 0 light-dark(#ffffffc0,#ffffff0f);border-radius:var(--u-radius);overflow:hidden}
+#ui-four-fresh .uf-kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--u-muted)}
+#ui-four-fresh .uf-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Pocket — collectible paper and a soft, expanding tray. */
+#ui-four-fresh .uf-pocket{padding:23px 22px 18px}
+#ui-four-fresh .uf-pocket-heading{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:24px}
+#ui-four-fresh .uf-pocket-heading strong{font-size:16px;font-weight:500;letter-spacing:-.3px}
+#ui-four-fresh .uf-pocket-heading span{font-size:12px;color:var(--u-muted)}
+#ui-four-fresh .uf-posters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;padding:0 3px}
+#ui-four-fresh .uf-poster{min-width:0;text-align:center;perspective:800px}
+#ui-four-fresh .uf-poster-art{height:178px;position:relative;overflow:hidden;background:var(--u-paper);box-shadow:0 6px 9px -5px var(--u-shadow),0 1px 2px var(--u-shadow);border-radius:3px;transform:rotate(var(--poster-angle));transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .4s}
+#ui-four-fresh .uf-poster[data-saved=true] .uf-poster-art{transform:translateY(3px) rotate(0deg) scale(.96);opacity:.58}
+#ui-four-fresh .uf-poster-art:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,light-dark(#00000003,#ffffff03) 0 1px,transparent 1px 3px);box-shadow:inset 0 0 0 1px light-dark(#00000009,#ffffff13)}
+#ui-four-fresh .uf-art-a{--poster-angle:-5deg;background:light-dark(#cbc8ea,#514d76);color:light-dark(#3e4269,#e2dffd)}
+#ui-four-fresh .uf-art-a .uf-poster-name{position:absolute;top:11px;left:12px;font-family:Georgia,serif;font-size:25px;line-height:.87;letter-spacing:-1.3px;text-align:left}
+#ui-four-fresh .uf-art-a .uf-orb{position:absolute;width:90px;height:90px;border-radius:50%;left:50%;top:71px;transform:translateX(-50%);background:radial-gradient(circle at 31% 25%,light-dark(#fff0c9,#f0d9b2),light-dark(#e6a383,#c18c74) 43%,light-dark(#a84b61,#774454) 76%,light-dark(#713c71,#412f4a));box-shadow:8px 9px 16px light-dark(#63527635,#211d393d)}
+#ui-four-fresh .uf-art-b{--poster-angle:3deg;background:light-dark(#e7ecb4,#596036);color:light-dark(#344734,#f0f2cd)}
+#ui-four-fresh .uf-art-b .uf-poster-name{position:absolute;bottom:12px;left:11px;right:11px;text-align:left;line-height:.9;font-weight:600;font-size:22px;letter-spacing:-1.1px}
+#ui-four-fresh .uf-art-b .uf-steps{position:absolute;left:18%;right:18%;top:18px;height:82px;background:repeating-linear-gradient(0deg,light-dark(#46644c,#a7bc82) 0 6px,light-dark(#b5bf7b,#69784e) 6px 12px);clip-path:polygon(0 45%,20% 45%,20% 30%,40% 30%,40% 15%,60% 15%,60% 0,80% 0,80% 55%,100% 55%,100% 100%,0 100%);transform:skewY(-12deg)}
+#ui-four-fresh .uf-art-c{--poster-angle:-2deg;background:light-dark(#dc613d,#8c3e2b);color:light-dark(#fff0cd,#ffe6c5)}
+#ui-four-fresh .uf-art-c .uf-poster-name{position:absolute;top:13px;left:11px;font-size:22px;letter-spacing:-1.2px;line-height:.86;font-weight:600;text-align:left}
+#ui-four-fresh .uf-art-c .uf-rings{position:absolute;top:70px;left:50%;width:99px;height:99px;transform:translateX(-50%);border-radius:50%;background:repeating-radial-gradient(circle at 50%,transparent 0 6px,light-dark(#ffd39d,#ecc18f) 6px 8px,transparent 8px 12px)}
+#ui-four-fresh .uf .uf-collect{font-size:12px;margin-top:10px;padding:8px 7px;min-width:82px;color:var(--u-ink)}
+#ui-four-fresh .uf .uf-collect:hover:not(:disabled){background:var(--u-paper)}
+#ui-four-fresh .uf-collect span:first-child{font-size:18px;font-weight:400;line-height:1}
+#ui-four-fresh .uf-tray{position:relative;margin-top:21px;border-radius:var(--u-radius);background:var(--u-sage);box-shadow:inset 0 1px 1px light-dark(#ffffffae,#ffffff20),0 3px 4px light-dark(#43522e15,#00000030);isolation:isolate;--tray-duration:380ms;--tray-ease:cubic-bezier(.22,1,.36,1);transition:border-radius var(--tray-duration) var(--tray-ease),box-shadow var(--tray-duration) var(--tray-ease)}
+#ui-four-fresh .uf-tray:before{content:"";position:absolute;top:10px;left:18px;right:18px;height:5px;border-radius:6px;background:var(--u-orange);box-shadow:inset 0 2px 2px light-dark(#42483045,#00000045);z-index:5;pointer-events:none;transition:opacity 160ms ease}
+#ui-four-fresh .uf .uf-tray-trigger{position:relative;z-index:4;width:100%;text-align:left;justify-content:space-between;padding:26px 18px 15px;min-height:82px;border-radius:var(--u-radius);background:var(--u-sage);color:var(--u-ink);transition:border-radius var(--tray-duration) var(--tray-ease),background 160ms ease}
+#ui-four-fresh .uf .uf-tray-trigger:active{transform:none}
+#ui-four-fresh .uf .uf-tray-trigger:hover{background:color-mix(in oklab,var(--u-sage),var(--u-ink) 3%)}
+#ui-four-fresh .uf-tray-trigger>span:first-child{display:flex;align-items:center;gap:12px}
+#ui-four-fresh .uf-pocket-icon{width:31px;height:35px;display:grid;place-items:center;border:1px solid var(--u-orange);border-radius:4px 4px 10px 10px;box-shadow:inset 0 0 0 3px var(--u-sage);font-size:12px}
+#ui-four-fresh .uf-tray-title{font-size:14px;display:block;font-weight:500}
+#ui-four-fresh .uf-tray-sub{font-size:11px;display:block;color:var(--u-muted);margin-top:2px}
+#ui-four-fresh .uf-tray-arrow{display:flex;align-items:center;transition:transform var(--tray-duration) var(--tray-ease)}
+#ui-four-fresh .uf-tray-trigger[aria-expanded=true] .uf-tray-arrow{transform:rotate(180deg)}
+/* The collection stays full size and unfolds from the pocket seam. */
+#ui-four-fresh .uf-tray-list-wrap{position:absolute;bottom:100%;left:0;right:0;background:var(--u-sage);border-radius:var(--u-radius) var(--u-radius) 0 0;overflow:hidden;box-shadow:0 -7px 18px -10px var(--u-shadow);z-index:3;transform-origin:50% 100%;transform:perspective(900px) translateY(1px) rotateX(82deg);backface-visibility:hidden;opacity:0;visibility:hidden;pointer-events:none;transition:transform var(--tray-duration) var(--tray-ease),opacity 180ms ease,visibility 0s var(--tray-duration)}
+#ui-four-fresh .uf-tray-list-wrap[data-open=true]{transform:perspective(900px) translateY(1px) rotateX(0deg);opacity:1;visibility:visible;pointer-events:auto;transition-delay:0s}
+#ui-four-fresh .uf-tray-list{min-height:0;overflow:hidden}
+#ui-four-fresh .uf-tray-inner{padding:0 14px 10px}
+#ui-four-fresh .uf-tray-empty{font-size:12px;color:var(--u-muted);margin:0;padding:12px 4px}
+#ui-four-fresh .uf-tray-row{display:flex;justify-content:space-between;gap:8px;align-items:center;border-top:1px solid var(--u-line);padding-left:4px;min-height:44px;font-size:12px}
+#ui-four-fresh .uf .uf-remove{padding:6px 9px;color:var(--u-muted);min-height:44px;font-size:12px}
+#ui-four-fresh .uf-ghost{position:absolute;pointer-events:none;z-index:20;transform:none!important;margin:0}
+
+/* Spool — a small, deliberately mechanical moving-image editor. */
+#ui-four-fresh .uf-spool{--u-bg:light-dark(#e9e8e3,#202326);--u-paper:light-dark(#f8f7f1,#323638);--u-ink:light-dark(#252b2b,#eff1ec);--u-muted:light-dark(#697171,#a9b3b2);--u-line:light-dark(#cdd0c9,#43494a);--u-screen:light-dark(#e7bd8b,#79533b);--u-sky:light-dark(#9abdc1,#486975);--u-sky-hi:light-dark(#d6e1cc,#859c94);--u-floor:light-dark(#ddab70,#997246);--u-wall:light-dark(#d0784e,#a96044);--u-wall-hi:light-dark(#ecb07b,#d18a60);--u-wall-side:light-dark(#a7563f,#793c31);--u-sun:light-dark(#fae6aa,#dfbf7c);--u-ball:light-dark(#db5d3b,#c96c4d);--u-ball-hi:light-dark(#f2b281,#edb786);--u-ball-dark:light-dark(#6d3935,#632e2a);--u-cast:light-dark(#724a3c48,#392d3060)}
+#ui-four-fresh .uf-spool-panel{padding:10px}
+#ui-four-fresh .uf-screen{height:250px;border-radius:var(--u-radius);overflow:hidden;position:relative;background:var(--u-screen)}
+#ui-four-fresh .uf-screen canvas{width:100%;height:100%;display:block}
+#ui-four-fresh .uf-screen-top{position:absolute;left:17px;right:17px;top:14px;display:flex;justify-content:space-between;color:light-dark(#49382d,#ffe6be);font-size:11px;letter-spacing:.05em;pointer-events:none}
+#ui-four-fresh .uf-screen-title{position:absolute;left:19px;bottom:16px;color:light-dark(#fff3d6,#fff1d2);text-shadow:0 1px 15px light-dark(#33221644,#22161066);pointer-events:none}
+#ui-four-fresh .uf-screen-title strong{font-family:Georgia,'Times New Roman',serif;font-size:30px;font-weight:400;letter-spacing:-1px}
+#ui-four-fresh .uf-screen-title span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:2px}
+#ui-four-fresh .uf-save-mark{position:absolute;right:17px;bottom:16px;border-radius:50%;width:31px;height:31px;display:grid;place-items:center;background:var(--u-paper);color:var(--u-orange);box-shadow:0 2px 10px light-dark(#35292025,#1b1d1730)}
+#ui-four-fresh .uf-transport{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 6px 8px}
+#ui-four-fresh .uf-transport-left{display:flex;gap:4px;align-items:center}
+#ui-four-fresh .uf .uf-play{width:45px;height:45px;background:var(--u-ink);color:var(--u-bg);border-radius:50%;padding:0;box-shadow:0 3px 7px var(--u-shadow)}
+#ui-four-fresh .uf .uf-frame-step{width:40px;padding:0}
+#ui-four-fresh .uf .uf-frame-step:hover{background:var(--u-paper)}
+#ui-four-fresh .uf-time{font:12px ui-monospace,SFMono-Regular,monospace;letter-spacing:-.3px;white-space:nowrap}
+#ui-four-fresh .uf-time span{color:var(--u-muted)}
+#ui-four-fresh .uf .uf-save{font-size:12px;background:var(--u-paper);border:1px solid var(--u-line);padding:8px 11px;white-space:nowrap;box-shadow:0 1px 2px var(--u-shadow)}
+#ui-four-fresh .uf-film{position:relative;height:80px;margin:0 7px;border-radius:6px;background:var(--u-ink);padding:9px 3px}
+#ui-four-fresh .uf-film:before,#ui-four-fresh .uf-film:after{content:"";position:absolute;height:4px;left:7px;right:7px;background:repeating-linear-gradient(90deg,var(--u-line) 0 5px,transparent 5px 13px);border-radius:1px;pointer-events:none}
+#ui-four-fresh .uf-film:before{top:3px}#ui-four-fresh .uf-film:after{bottom:3px}
+#ui-four-fresh .uf-thumbs{display:grid;grid-template-columns:repeat(6,1fr);height:62px;gap:3px;overflow:hidden}
+#ui-four-fresh .uf-thumbs canvas{display:block;width:100%;height:62px;background:var(--u-screen);border-radius:2px}
+#ui-four-fresh .uf-playhead{position:absolute;top:0;bottom:0;width:2px;left:1%;background:var(--u-bright);box-shadow:0 0 0 1px light-dark(#f7d2a355,#ffe5b438);pointer-events:none;z-index:2}
+#ui-four-fresh .uf-playhead:before{content:"";position:absolute;left:-5px;top:-5px;width:12px;height:10px;background:var(--u-bright);border-radius:2px 2px 5px 5px}
+#ui-four-fresh .uf .uf-timeline{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize;touch-action:pan-y;z-index:3}
+#ui-four-fresh .uf-film:has(input:focus-visible){outline:2px solid var(--u-orange);outline-offset:3px}
+#ui-four-fresh .uf-film input:focus-visible{outline:none}
+#ui-four-fresh .uf button:focus:not(:focus-visible){outline:none}
+#ui-four-fresh .uf button:focus-visible{outline:2px solid var(--u-orange);outline-offset:-3px}
+#ui-four-fresh .uf-film-labels{display:flex;justify-content:space-between;margin:9px 8px 4px;font:11px ui-monospace,SFMono-Regular,monospace;color:var(--u-muted)}
+
+/* Index — a changing editorial spine, with one expanded chapter. */
+#ui-four-fresh .uf-index{--u-bg:light-dark(#eee9df,#272924);--u-paper:light-dark(#faf5e8,#36382e);--u-ink:light-dark(#253c32,#e4eadb);--u-muted:light-dark(#6d7464,#b2baa7);--u-line:light-dark(#cdd1bd,#525846)}
+#ui-four-fresh .uf-index-panel{padding:8px;border-radius:var(--u-radius);background:var(--u-paper)}
+#ui-four-fresh .uf-index-top{display:flex;justify-content:space-between;align-items:center;padding:16px 15px 20px}
+#ui-four-fresh .uf-index-title{font-family:Georgia,'Times New Roman',serif;font-size:28px;letter-spacing:-1px}
+#ui-four-fresh .uf-index-edition{font-size:11px;line-height:1.4;text-align:right;color:var(--u-muted)}
+#ui-four-fresh .uf-chapter{--chapter-bg:light-dark(#dfe5bd,#465635);--chapter-ink:light-dark(#283e2b,#eff2d2);background:var(--chapter-bg);color:var(--chapter-ink);border-radius:var(--u-radius);margin-top:5px;position:relative;overflow:hidden}
+#ui-four-fresh .uf-chapter-b{--chapter-bg:light-dark(#e8ae7e,#79533c);--chapter-ink:light-dark(#5c3527,#ffe8cd)}
+#ui-four-fresh .uf-chapter-c{--chapter-bg:light-dark(#c7c7e1,#505075);--chapter-ink:light-dark(#3e385c,#edeaff)}
+#ui-four-fresh .uf .uf-chapter-trigger{width:100%;justify-content:space-between;min-height:67px;text-align:left;padding:14px 18px;color:var(--chapter-ink);border-radius:var(--u-radius);position:relative;z-index:3}
+#ui-four-fresh .uf-chapter-trigger:hover{background:light-dark(#ffffff18,#ffffff09)}
+#ui-four-fresh .uf-chapter-label{display:flex;align-items:center;gap:18px}
+#ui-four-fresh .uf-chapter-no{font:12px ui-monospace,SFMono-Regular,monospace;opacity:.75}
+#ui-four-fresh .uf-chapter-name{font-size:19px;font-weight:500;letter-spacing:-.5px}
+#ui-four-fresh .uf-chapter-sign{font-size:24px;font-weight:400;line-height:1}
+#ui-four-fresh .uf-chapter-fold{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.19,1,.22,1)}
+#ui-four-fresh .uf-chapter[data-open=true] .uf-chapter-fold{grid-template-rows:1fr}
+#ui-four-fresh .uf-chapter-content{overflow:hidden;min-height:0}
+#ui-four-fresh .uf-chapter-spread{height:173px;position:relative;padding:0 18px 18px;display:flex;flex-direction:column;justify-content:flex-end}
+#ui-four-fresh .uf-chapter-detail{font-size:12px;position:relative;z-index:2;max-width:48%;line-height:1.4}
+#ui-four-fresh .uf-chapter-page{font:11px ui-monospace,SFMono-Regular,monospace;margin-top:10px;display:flex;gap:6px;align-items:center}
+#ui-four-fresh .uf-fold-art{position:absolute;right:22px;top:-2px;width:154px;height:147px;perspective:700px;transform:translateY(12px) rotate(-8deg);transition:transform .7s cubic-bezier(.19,1,.22,1);pointer-events:none}
+#ui-four-fresh .uf-chapter[data-open=true] .uf-fold-art{transform:translateY(-7px) rotate(-8deg)}
+#ui-four-fresh .uf-fold-leaf{position:absolute;inset:0;transform:rotateY(calc(var(--leaf)*-21deg));transform-origin:0 50%;background:linear-gradient(90deg,light-dark(#fcf6cd,#e0d6a8),light-dark(#d2d69f,#adb77c));box-shadow:inset 1px 0 0 light-dark(#ffffffdd,#fcf5c5bb),3px 9px 12px light-dark(#34522825,#161e1640);border-radius:1px 5px 5px 1px}
+#ui-four-fresh .uf-fold-leaf:last-child{display:flex;align-items:flex-end;padding:12px;color:light-dark(#4e623f,#3e512e);font:28px Georgia,serif;letter-spacing:-1px;background:linear-gradient(90deg,light-dark(#b5c77d,#9fad6b),light-dark(#e6eab3,#d5d997))}
+#ui-four-fresh .uf-index-circles{position:absolute;right:20px;top:-8px;width:170px;height:155px;transform:rotate(-14deg)}
+#ui-four-fresh .uf-index-circles i{position:absolute;left:var(--circle-x);top:var(--circle-y);width:82px;height:82px;border-radius:50%;background:radial-gradient(circle at 30% 25%,light-dark(#ffdb9f,#f2c289),light-dark(#e7854c,#d27640) 52%,light-dark(#a65032,#8d4930));box-shadow:8px 12px 16px light-dark(#81402932,#24160d3d)}
+#ui-four-fresh .uf-index-type{position:absolute;right:12px;top:-20px;font:italic 134px/.9 Georgia,serif;letter-spacing:-13px;color:light-dark(#615b92,#b8b0e8);transform:rotate(-12deg);text-shadow:2px 2px light-dark(#ede6f3,#797198),10px 14px 0 light-dark(#847caf25,#25233a25)}
+#ui-four-fresh .uf-index-bottom{padding:15px 15px 9px;display:flex;justify-content:space-between;font-size:11px;color:var(--u-muted)}
+
+/* Press — deliberate confirmation, with a receipt that keeps the result. */
+#ui-four-fresh .uf-press{--u-bg:light-dark(#ede9e4,#262323);--u-paper:light-dark(#fff9ee,#3a332d);--u-ink:light-dark(#453b35,#f4eadd);--u-muted:light-dark(#80736a,#c0afa1);--u-line:light-dark(#d8cfc5,#554941);--u-accent:light-dark(#a93627,#ec8d71)}
+#ui-four-fresh .uf-press-panel{display:flex;flex-direction:column;align-items:center;padding:25px 24px 19px;background:radial-gradient(ellipse at 50% 20%,var(--u-paper),var(--u-bg) 78%)}
+#ui-four-fresh .uf-receipt{width:100%;max-width:325px;position:relative;background:var(--u-paper);padding:20px 24px 17px;box-shadow:0 14px 20px -12px light-dark(#4c332636,#00000065),0 1px 3px light-dark(#51423516,#00000033);transform:rotate(-2deg);transition:transform .45s cubic-bezier(.2,.8,.2,1);border-radius:3px 3px 0 0;isolation:isolate}
+#ui-four-fresh .uf-receipt:after{content:"";position:absolute;bottom:-6px;left:0;right:0;height:7px;background:linear-gradient(135deg,var(--u-paper) 25%,transparent 25%) -7px 0,linear-gradient(225deg,var(--u-paper) 25%,transparent 25%) -7px 0;background-size:14px 14px}
+#ui-four-fresh .uf-receipt-top{display:flex;justify-content:space-between;font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.06em;color:var(--u-muted)}
+#ui-four-fresh .uf-receipt h3{font:34px/1 Georgia,'Times New Roman',serif;letter-spacing:-1.5px;margin:20px 0 4px;color:var(--u-ink)}
+#ui-four-fresh .uf-receipt-sub{font-size:12px;color:var(--u-muted)}
+#ui-four-fresh .uf-receipt-rule{height:1px;background:repeating-linear-gradient(90deg,var(--u-line) 0 4px,transparent 4px 8px);margin:12px 0 9px}
+#ui-four-fresh .uf-receipt-row{display:flex;justify-content:space-between;font-size:12px;gap:14px;margin:7px 0}
+#ui-four-fresh .uf-receipt-row span:last-child{font-family:ui-monospace,SFMono-Regular,monospace}
+#ui-four-fresh .uf-stamp-slot{height:43px;position:relative;display:flex;align-items:center;justify-content:center;margin-top:5px}
+#ui-four-fresh .uf-awaiting{font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.08em;color:var(--u-muted)}
+#ui-four-fresh .uf-stamp{position:absolute;inset:3px 8px;border:3px double var(--u-accent);border-radius:5px;display:flex;align-items:center;justify-content:center;gap:9px;font:500 24px ui-monospace,SFMono-Regular,monospace;letter-spacing:.12em;color:var(--u-accent);transform:scale(1.5) rotate(-9deg);opacity:0;transition:transform .27s cubic-bezier(.2,.8,.2,1),opacity .15s;pointer-events:none}
+#ui-four-fresh .uf-stamp svg{width:21px;height:21px}
+#ui-four-fresh .uf-press-panel[data-sealed=true] .uf-stamp{transform:scale(1) rotate(-9deg);opacity:.88}
+#ui-four-fresh .uf-press-panel[data-sealed=true] .uf-awaiting{opacity:0}
+#ui-four-fresh .uf-press-panel[data-sealed=true] .uf-receipt{transform:rotate(1deg) translateY(2px)}
+#ui-four-fresh .uf-press-controls{width:100%;max-width:325px;margin-top:28px;display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:9px;align-items:center}
+#ui-four-fresh .uf .uf-hold{height:53px;border-radius:var(--u-radius);background:light-dark(#753b2d,#c26c51);color:light-dark(#fff2df,#241610);box-shadow:inset 0 1px 0 light-dark(#c69c8499,#ffd4b77a),0 4px 0 light-dark(#4e291f,#8a4835),0 7px 11px light-dark(#48281928,#0000004d);position:relative;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;padding:12px;transition:transform .13s,box-shadow .13s}
+#ui-four-fresh .uf .uf-hold[data-holding=true]{transform:translateY(3px);box-shadow:inset 0 1px 0 light-dark(#c69c8499,#ffd4b77a),0 1px 0 light-dark(#4e291f,#8a4835),0 2px 4px light-dark(#48281928,#0000004d)}
+#ui-four-fresh .uf-hold-fill{position:absolute;inset:0;background:color-mix(in oklab,var(--u-paper) 20%,transparent);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+#ui-four-fresh .uf-hold-content{display:flex;align-items:center;justify-content:center;gap:9px;position:relative;pointer-events:none;font-size:13px}
+#ui-four-fresh .uf .uf-hold:disabled{opacity:1;background:var(--u-sage);color:var(--u-orange);box-shadow:inset 0 1px #fff6,0 2px 0 var(--u-line)}
+#ui-four-fresh .uf .uf-undo{width:54px;height:53px;border:1px solid var(--u-line);background:var(--u-paper);box-shadow:0 2px 2px var(--u-shadow);padding:0;border-radius:var(--u-radius)}
+#ui-four-fresh .uf-press-hint{font-size:11px;color:var(--u-muted);margin-top:14px;min-height:17px;text-align:center}
+
+@media(max-width:480px){
+ #ui-four-fresh .uf-stage{height:650px;padding:16px 5px}
+ #ui-four-fresh .uf-top{margin-bottom:14px}
+ #ui-four-fresh .uf-name{font-size:22px}
+ #ui-four-fresh .uf-category{font-size:11px;letter-spacing:.06em}
+ #ui-four-fresh .uf-pocket{padding:19px 12px 14px}
+ #ui-four-fresh .uf-pocket-heading{margin-bottom:21px}
+ #ui-four-fresh .uf-posters{gap:9px}
+ #ui-four-fresh .uf-poster-art{height:150px}
+ #ui-four-fresh .uf-poster-name{font-size:19px!important;left:9px!important}
+ #ui-four-fresh .uf-art-a .uf-orb{width:72px;height:72px;top:67px}
+ #ui-four-fresh .uf-art-b .uf-steps{height:64px;top:16px}
+ #ui-four-fresh .uf-art-b .uf-poster-name{font-size:17px!important;letter-spacing:-1px}
+ #ui-four-fresh .uf-art-c .uf-rings{width:79px;height:79px;top:64px}
+ #ui-four-fresh .uf .uf-collect{min-width:0;width:100%;font-size:11px;gap:4px;padding:7px 2px}
+ #ui-four-fresh .uf-tray{margin-top:16px}
+ #ui-four-fresh .uf-foot{font-size:11px}
+ #ui-four-fresh .uf-screen{height:235px}
+ #ui-four-fresh .uf-transport{flex-wrap:wrap;padding:12px 3px 9px;gap:6px}
+ #ui-four-fresh .uf-transport-left{gap:0}
+ #ui-four-fresh .uf .uf-frame-step{width:44px}
+ #ui-four-fresh .uf .uf-play{width:42px;height:44px}
+ #ui-four-fresh .uf-time{font-size:11px}
+ #ui-four-fresh .uf .uf-save{padding:7px 9px;min-width:44px}
+ #ui-four-fresh .uf-save-word{display:none}
+ #ui-four-fresh .uf-thumbs{grid-template-columns:repeat(6,1fr)}
+ #ui-four-fresh .uf-film{margin:0 4px}
+ #ui-four-fresh .uf-index-top{padding:15px 12px 18px}
+ #ui-four-fresh .uf-index-title{font-size:25px}
+ #ui-four-fresh .uf .uf-chapter-trigger{padding:14px 12px}
+ #ui-four-fresh .uf-chapter-label{gap:10px}
+ #ui-four-fresh .uf-chapter-name{font-size:17px}
+ #ui-four-fresh .uf-chapter-spread{padding:0 12px 17px}
+ #ui-four-fresh .uf-fold-art{width:120px;height:128px;right:6px;top:4px}
+ #ui-four-fresh .uf-index-circles{width:122px;height:143px;right:9px;transform:rotate(-14deg) scale(.84);transform-origin:right center}
+ #ui-four-fresh .uf-index-type{font-size:109px;top:-2px;right:4px}
+ #ui-four-fresh .uf-chapter-detail{font-size:11px;max-width:49%}
+ #ui-four-fresh .uf-press-panel{padding:25px 20px 19px}
+ #ui-four-fresh .uf-receipt{padding:21px 19px 24px}
+ #ui-four-fresh .uf-receipt h3{font-size:31px}
+ #ui-four-fresh .uf-stamp{font-size:21px;inset:4px 0}
+}
+@media(prefers-reduced-motion:reduce){#ui-four-fresh .uf *,#ui-four-fresh .uf *:before,#ui-four-fresh .uf *:after{transition:none!important;animation:none!important}}
+/* Refined scale: paper occupies the panel, instructions remain readable. */
+#ui-four-fresh .uf-stage{height:auto;min-height:650px;padding:26px 18px}
+#ui-four-fresh .uf-number,#ui-four-fresh .uf-category,#ui-four-fresh .uf-kicker,#ui-four-fresh .uf-receipt-top,#ui-four-fresh .uf-awaiting{font-size:12px}
+#ui-four-fresh .uf-foot,#ui-four-fresh .uf-press-hint,#ui-four-fresh .uf-receipt-sub,#ui-four-fresh .uf-receipt-row,#ui-four-fresh .uf-tray-sub,#ui-four-fresh .uf-tray-row,#ui-four-fresh .uf-chapter-detail{font-size:14px;line-height:1.5}
+#ui-four-fresh .uf-receipt{max-width:440px;padding:28px 28px 23px}
+#ui-four-fresh .uf-receipt h3{font-size:clamp(34px,5vw,48px);letter-spacing:-1.8px;margin:28px 0 9px}
+#ui-four-fresh .uf-receipt-row{margin:10px 0}
+#ui-four-fresh .uf-receipt-rule{margin:20px 0 14px}
+#ui-four-fresh .uf-stamp-slot{height:58px;margin-top:15px}
+#ui-four-fresh .uf-press-controls{max-width:440px;grid-template-columns:minmax(0,1fr) 56px;margin-top:33px;gap:12px}
+#ui-four-fresh .uf-hold-content{font-size:16px;gap:12px}
+#ui-four-fresh .uf .uf-hold,#ui-four-fresh .uf .uf-undo{height:56px}
+#ui-four-fresh .uf .uf-undo{width:56px}
+#ui-four-fresh .uf .uf-collect{font-size:14px}
+#ui-four-fresh .uf .uf-hold{touch-action:pan-y;-webkit-touch-callout:none}
+#ui-four-fresh .uf-press-hint{margin-top:20px}
+#ui-four-fresh .uf-press-panel{padding:32px 32px 24px}
+#ui-four-fresh .uf-foot{align-items:flex-start;min-height:42px}
+#ui-four-fresh .uf-foot>span:last-child{white-space:nowrap;font-size:12px;padding-top:2px}
+@media(max-width:480px){#ui-four-fresh .uf-stage{min-height:0;padding:24px 16px}#ui-four-fresh .uf-press-panel{padding:25px 19px 20px}#ui-four-fresh .uf-receipt{padding:24px 20px 20px}#ui-four-fresh .uf-receipt-top{font-size:11px;letter-spacing:0}#ui-four-fresh .uf-receipt h3{font-size:36px}#ui-four-fresh .uf-posters{gap:8px}#ui-four-fresh .uf-tray-sub{font-size:12px}#ui-four-fresh .uf-chapter-detail{font-size:12px}#ui-four-fresh .uf-hold-content{font-size:15px}#ui-four-fresh .uf .uf-hold svg{width:19px;height:19px}}
+/* A continuous pocket surface: only the outside silhouette is rounded. */
+#ui-four-fresh .uf-tray[data-open=true],
+#ui-four-fresh .uf .uf-tray-trigger[aria-expanded=true]{border-radius:0 0 var(--u-radius) var(--u-radius)}
+#ui-four-fresh .uf-tray-inner{padding:12px 16px 0}
+#ui-four-fresh .uf-tray-row:first-of-type{border-top:0}
+#ui-four-fresh .uf-tray[data-open=true]:before{opacity:0}
+#ui-four-fresh .uf-tray[data-open=true]{box-shadow:0 3px 4px var(--u-shadow)}
+#ui-four-fresh .uf .uf-chapter-trigger[aria-expanded=true]{border-radius:var(--u-radius) var(--u-radius) 0 0}
+#ui-four-fresh .uf-top{margin-bottom:16px}
+#ui-four-fresh .uf-foot{margin-top:12px;min-height:42px;align-items:center}
+#ui-four-fresh .uf-chapter-spread{padding-top:12px}
+#ui-four-fresh .uf-fold-art{top:12px}
+#ui-four-fresh .uf-index-circles{top:8px}
+#ui-four-fresh .uf-index-type{top:4px}
+html[data-embedded],html[data-embedded] body{height:100%;overflow:hidden;overscroll-behavior:none;background:transparent!important;color-scheme:light}
+html[data-embedded] #ui-four-fresh,html[data-embedded] [data-variant]{height:100%}
+html[data-embedded] #ui-four-fresh .uf-stage{height:100%;min-height:0;padding:0;overflow:hidden}
+html[data-embedded] #ui-four-fresh .uf{position:absolute;left:50%;top:50%;width:calc(100% - 32px);max-width:570px;transform:translate(-50%,-50%) scale(var(--fit,1));transform-origin:center}
+@media(max-height:620px){
+ html[data-embedded] #ui-four-fresh .uf-top{margin-bottom:10px}
+ html[data-embedded] #ui-four-fresh .uf-foot{margin-top:8px;min-height:30px;font-size:12px}
+ html[data-embedded] #ui-four-fresh .uf-pocket{padding:16px}
+ html[data-embedded] #ui-four-fresh .uf-pocket-heading{margin-bottom:16px}
+ html[data-embedded] #ui-four-fresh .uf-poster-art{height:140px}
+ html[data-embedded] #ui-four-fresh .uf-screen{height:185px}
+ html[data-embedded] #ui-four-fresh .uf-chapter-spread{height:145px}
+ html[data-embedded] #ui-four-fresh .uf-index-top{padding:12px 12px 14px}
+ html[data-embedded] #ui-four-fresh .uf .uf-chapter-trigger{min-height:56px}
+ html[data-embedded] #ui-four-fresh .uf-press-panel{padding:22px 20px 18px}
+ html[data-embedded] #ui-four-fresh .uf-receipt{padding:18px 20px}
+ html[data-embedded] #ui-four-fresh .uf-receipt h3{font-size:34px;margin:18px 0 8px}
+ html[data-embedded] #ui-four-fresh .uf-receipt-rule{margin:14px 0 10px}
+ html[data-embedded] #ui-four-fresh .uf-receipt-row{margin:7px 0}
+ html[data-embedded] #ui-four-fresh .uf-stamp-slot{height:40px;margin-top:8px}
+ html[data-embedded] #ui-four-fresh .uf-press-controls{margin-top:26px}
+ html[data-embedded] #ui-four-fresh .uf-press-hint{margin-top:14px}
+}
+/* Craft pass: readable controls and compact space, before any scale fallback. */
+#ui-four-fresh .uf .uf-frame-step,#ui-four-fresh .uf .uf-play{width:44px;min-height:44px;height:44px}
+#ui-four-fresh .uf .uf-save,#ui-four-fresh .uf .uf-remove{font-size:14px;min-height:44px}
+#ui-four-fresh .uf-number,#ui-four-fresh .uf-category,#ui-four-fresh .uf-index-edition,#ui-four-fresh .uf-index-bottom,#ui-four-fresh .uf-screen-top,#ui-four-fresh .uf-film-labels,#ui-four-fresh .uf-time{font-size:12px}
+#ui-four-fresh .uf-tray-row{font-size:14px;min-height:48px}
+#ui-four-fresh .uf-tray-inner{padding:8px 16px 0}
+#ui-four-fresh .uf-tray-list-wrap{box-shadow:0 -9px 20px -16px var(--u-shadow)}
+#ui-four-fresh .uf-chapter-fold{transition:grid-template-rows .42s cubic-bezier(.22,.8,.25,1)}
+#ui-four-fresh .uf-chapter-page{font-size:12px;letter-spacing:0}
+@media(max-width:480px){
+ #ui-four-fresh .uf-receipt-top,#ui-four-fresh .uf-awaiting{font-size:12px;letter-spacing:0}
+ #ui-four-fresh .uf-chapter-detail{font-size:14px}
+ #ui-four-fresh .uf-chapter-label{gap:12px}
+ #ui-four-fresh .uf-transport{display:grid;grid-template-columns:132px minmax(0,1fr) 44px;gap:4px}
+ #ui-four-fresh .uf-time{text-align:center;font-size:12px}
+ #ui-four-fresh .uf-time span{display:inline}
+ #ui-four-fresh .uf .uf-save{width:44px;padding:0}
+}
+@media(max-height:620px){
+ html[data-embedded] #ui-four-fresh .uf-top{margin-bottom:8px}
+ html[data-embedded] #ui-four-fresh .uf-foot{min-height:26px;margin-top:8px;font-size:13px;line-height:1.35}
+ html[data-embedded] #ui-four-fresh .uf-screen{height:165px}
+ html[data-embedded] #ui-four-fresh .uf-index-top{padding:8px 12px 10px}
+ html[data-embedded] #ui-four-fresh .uf-index-title{font-size:24px}
+ html[data-embedded] #ui-four-fresh .uf .uf-chapter-trigger{min-height:52px;padding:10px 12px}
+ html[data-embedded] #ui-four-fresh .uf-chapter-spread{height:112px;padding:0 12px 12px}
+ html[data-embedded] #ui-four-fresh .uf-chapter-detail{line-height:1.35}
+ html[data-embedded] #ui-four-fresh .uf-chapter-page{margin-top:6px}
+ html[data-embedded] #ui-four-fresh .uf-index-bottom{padding:8px 12px}
+ html[data-embedded] #ui-four-fresh .uf-fold-art{top:2px;right:16px;width:118px;height:92px;transform:translateY(7px) rotate(-8deg);transform-origin:center}
+ html[data-embedded] #ui-four-fresh .uf-chapter[data-open=true] .uf-fold-art{transform:translateY(0) rotate(-8deg)}
+ html[data-embedded] #ui-four-fresh .uf-index-circles{top:6px;transform:scale(.62) rotate(-14deg);transform-origin:top right}
+ html[data-embedded] #ui-four-fresh .uf-index-type{top:8px;right:18px;font-size:92px}
+ html[data-embedded] #ui-four-fresh .uf-press .uf-top{margin-bottom:6px}
+ html[data-embedded] #ui-four-fresh .uf-press-panel{padding:16px 20px}
+ html[data-embedded] #ui-four-fresh .uf-receipt{padding:12px 18px}
+ html[data-embedded] #ui-four-fresh .uf-receipt h3{font-size:32px;margin:10px 0 6px;letter-spacing:-1.2px}
+ html[data-embedded] #ui-four-fresh .uf-receipt-rule{margin:10px 0 8px}
+ html[data-embedded] #ui-four-fresh .uf-receipt-row{margin:4px 0}
+ html[data-embedded] #ui-four-fresh .uf-stamp-slot{height:48px;margin-top:10px}
+ html[data-embedded] #ui-four-fresh .uf-stamp{font-size:20px;inset:auto;width:min(100%,208px);height:30px;transform:scale(1.25) rotate(-4deg)}
+ html[data-embedded] #ui-four-fresh .uf-press-panel[data-sealed=true] .uf-stamp{transform:scale(1) rotate(-4deg)}
+ html[data-embedded] #ui-four-fresh .uf-press-controls{margin-top:16px}
+ html[data-embedded] #ui-four-fresh .uf-press-hint{margin-top:10px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ #ui-four-fresh .uf *,#ui-four-fresh .uf *:before,#ui-four-fresh .uf *:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+
+<div id="ui-four-fresh" class="viz-carousel viz-dotted-background" aria-label="Material examples">
+ <section data-variant="Pocket" aria-label="Pocket collection component">
+  <div class="uf-stage" id="uf-pocket-stage">
+   <div class="uf">
+    <div class="uf-top"><div class="uf-name"><span class="uf-number">01</span> Pocket</div><div class="uf-category">Collection</div></div>
+    <div class="uf-panel uf-pocket">
+     <div class="uf-pocket-heading"><strong>A few good finds.</strong><span>Studio picks / 03</span></div>
+     <div class="uf-posters" id="uf-posters">
+      <div class="uf-poster" id="uf-poster-0" data-saved="false">
+       <div class="uf-poster-art uf-art-a" id="uf-poster-art-0" role="img" aria-label="Other Side: lilac poster with a warm sculptural sphere"><span class="uf-poster-name">OTHER<br>SIDE</span><span class="uf-orb"></span></div>
+       <button type="button" class="uf-collect cursor-interaction" id="uf-collect-0" aria-label="Collect Other Side"><span aria-hidden="true">+</span><span>Collect</span></button>
+      </div>
+      <div class="uf-poster" id="uf-poster-1" data-saved="false">
+       <div class="uf-poster-art uf-art-b" id="uf-poster-art-1" role="img" aria-label="Common Ground: green poster with a stepped sculpture"><span class="uf-steps"></span><span class="uf-poster-name">COMMON<br>GROUND</span></div>
+       <button type="button" class="uf-collect cursor-interaction" id="uf-collect-1" aria-label="Collect Common Ground"><span aria-hidden="true">+</span><span>Collect</span></button>
+      </div>
+      <div class="uf-poster" id="uf-poster-2" data-saved="false">
+       <div class="uf-poster-art uf-art-c" id="uf-poster-art-2" role="img" aria-label="Soft Signal: terracotta poster with concentric rings"><span class="uf-poster-name">SOFT<br>SIGNAL</span><span class="uf-rings"></span></div>
+       <button type="button" class="uf-collect cursor-interaction" id="uf-collect-2" aria-label="Collect Soft Signal"><span aria-hidden="true">+</span><span>Collect</span></button>
+      </div>
+     </div>
+     <div class="uf-tray" id="uf-tray" data-open="false">
+      <button type="button" class="uf-tray-trigger cursor-interaction" id="uf-tray-toggle" aria-expanded="false" aria-controls="uf-tray-content">
+       <span><span class="uf-pocket-icon uf-mono" id="uf-pocket-count">0</span><span><span class="uf-tray-title">Moodboard</span><span class="uf-tray-sub" id="uf-pocket-sub">Your next collection starts here</span></span></span><i data-lucide="chevron-up" class="uf-tray-arrow" aria-hidden="true"></i>
+      </button>
+      <div class="uf-tray-list-wrap" id="uf-tray-content" data-open="false" aria-hidden="true" inert>
+       <div class="uf-tray-list"><div class="uf-tray-inner">
+        <p class="uf-tray-empty" id="uf-tray-empty">Collect a poster to keep it here.</p>
+        <div class="uf-tray-row" id="uf-tray-row-0" hidden><span>01 / Other Side</span><button type="button" class="uf-remove cursor-interaction" id="uf-remove-0" aria-label="Remove Other Side">Remove</button></div>
+        <div class="uf-tray-row" id="uf-tray-row-1" hidden><span>02 / Common Ground</span><button type="button" class="uf-remove cursor-interaction" id="uf-remove-1" aria-label="Remove Common Ground">Remove</button></div>
+        <div class="uf-tray-row" id="uf-tray-row-2" hidden><span>03 / Soft Signal</span><button type="button" class="uf-remove cursor-interaction" id="uf-remove-2" aria-label="Remove Soft Signal">Remove</button></div>
+       </div></div>
+      </div>
+     </div>
+    </div>
+    <div class="uf-foot"><span id="uf-pocket-status" aria-live="polite">Collect something that catches your eye.</span><span class="uf-mono">01—04</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section data-variant="Spool" aria-label="Spool filmstrip component" id="uf-spool-variant" hidden>
+  <div class="uf-stage">
+   <div class="uf uf-spool" id="uf-spool-root">
+    <div class="uf-top"><div class="uf-name"><span class="uf-number">02</span> Spool</div><div class="uf-category">Moving image</div></div>
+    <div class="uf-panel uf-spool-panel">
+     <div class="uf-screen">
+      <canvas id="uf-film-main" role="img" aria-label="Sun study: a warm architectural scene with shifting sunlight">Architectural sunlight study</canvas>
+      <div class="uf-screen-top"><span class="uf-mono">STUDIO / 008</span><span id="uf-film-frame" class="uf-mono">F.024</span></div>
+      <div class="uf-screen-title"><strong>Afternoon, slowly.</strong><span>A study in light</span></div>
+      <span class="uf-save-mark" id="uf-saved-mark" hidden><i data-lucide="bookmark-check" aria-hidden="true"></i><span class="uf-sr">Frame saved</span></span>
+     </div>
+     <div class="uf-transport">
+      <div class="uf-transport-left">
+       <button type="button" id="uf-film-prev" class="uf-frame-step cursor-interaction" aria-label="Previous frame"><i data-lucide="skip-back" aria-hidden="true"></i></button>
+       <button type="button" id="uf-film-play" class="uf-play cursor-interaction" aria-label="Play study" aria-pressed="false"><svg class="uf-play-morph" viewBox="0 0 24 24" aria-hidden="true"><path class="uf-play-left" d="M6 3 L12 6.6 L12 17.4 L6 21 Z"/><path class="uf-play-right" d="M12 6.6 L21 12 L21 12 L12 17.4 Z"/></svg></button>
+       <button type="button" id="uf-film-next" class="uf-frame-step cursor-interaction" aria-label="Next frame"><i data-lucide="skip-forward" aria-hidden="true"></i></button>
+      </div>
+      <div class="uf-time"><output id="uf-film-time">00:01</output><span> / 00:08</span></div>
+      <button type="button" id="uf-film-save" class="uf-save cursor-interaction" aria-label="Save this frame" aria-pressed="false"><i data-lucide="bookmark" aria-hidden="true"></i><span class="uf-save-word" id="uf-save-text">Keep frame</span></button>
+     </div>
+     <div class="uf-film">
+      <div class="uf-thumbs" aria-hidden="true"><canvas id="uf-film-thumb-0"></canvas><canvas id="uf-film-thumb-1"></canvas><canvas id="uf-film-thumb-2"></canvas><canvas id="uf-film-thumb-3"></canvas><canvas id="uf-film-thumb-4"></canvas><canvas id="uf-film-thumb-5"></canvas></div>
+      <div class="uf-playhead" id="uf-film-playhead"></div>
+      <input type="range" min="0" max="191" step="1" value="24" id="uf-film-scrub" class="uf-timeline cursor-interaction" aria-label="Scrub the sunlight study" aria-valuetext="Frame 24 of 191">
+     </div>
+     <div class="uf-film-labels"><span>00:00</span><span>00:04</span><span>00:08</span></div>
+    </div>
+    <div class="uf-foot"><span id="uf-film-status" aria-live="polite">Scrub the strip. Keep a moment.</span><span class="uf-mono">02—04</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section data-variant="Index" aria-label="Index editorial navigation component" hidden>
+  <div class="uf-stage">
+   <div class="uf uf-index">
+    <div class="uf-top"><div class="uf-name"><span class="uf-number">03</span> Index</div><div class="uf-category">Navigation</div></div>
+    <div class="uf-panel uf-index-panel">
+     <div class="uf-index-top"><span class="uf-index-title">Notes on making.</span><span class="uf-index-edition">FIELD GUIDE<br><span class="uf-mono">VOL. 01</span></span></div>
+     <div class="uf-chapter" id="uf-chapter-0" data-open="true">
+      <button type="button" class="uf-chapter-trigger cursor-interaction" id="uf-chapter-button-0" aria-expanded="true" aria-controls="uf-chapter-content-0"><span class="uf-chapter-label"><span class="uf-chapter-no">01</span><span class="uf-chapter-name">Start with a feeling.</span></span><span class="uf-chapter-sign" id="uf-chapter-sign-0" aria-hidden="true">−</span></button>
+      <div class="uf-chapter-fold" id="uf-chapter-content-0"><div class="uf-chapter-content"><div class="uf-chapter-spread"><div class="uf-chapter-detail">Small observations.<br>Unexpected beginnings.<span class="uf-chapter-page">P. 004—019</span></div><div class="uf-fold-art" aria-hidden="true"><span class="uf-fold-leaf" style="--leaf:0"></span><span class="uf-fold-leaf" style="--leaf:1"></span><span class="uf-fold-leaf" style="--leaf:2"></span><span class="uf-fold-leaf" style="--leaf:3">a little<br>curiosity.</span></div></div></div></div>
+     </div>
+     <div class="uf-chapter uf-chapter-b" id="uf-chapter-1" data-open="false">
+      <button type="button" class="uf-chapter-trigger cursor-interaction" id="uf-chapter-button-1" aria-expanded="false" aria-controls="uf-chapter-content-1"><span class="uf-chapter-label"><span class="uf-chapter-no">02</span><span class="uf-chapter-name">Find the rhythm.</span></span><span class="uf-chapter-sign" id="uf-chapter-sign-1" aria-hidden="true">+</span></button>
+      <div class="uf-chapter-fold" id="uf-chapter-content-1" inert><div class="uf-chapter-content"><div class="uf-chapter-spread"><div class="uf-chapter-detail">Repetition, variation,<br>and the space between.<span class="uf-chapter-page">P. 020—037</span></div><div class="uf-index-circles" aria-hidden="true"><i style="--circle-x:0;--circle-y:0"></i><i style="--circle-x:69px;--circle-y:14px"></i><i style="--circle-x:33px;--circle-y:69px"></i></div></div></div></div>
+     </div>
+     <div class="uf-chapter uf-chapter-c" id="uf-chapter-2" data-open="false">
+      <button type="button" class="uf-chapter-trigger cursor-interaction" id="uf-chapter-button-2" aria-expanded="false" aria-controls="uf-chapter-content-2"><span class="uf-chapter-label"><span class="uf-chapter-no">03</span><span class="uf-chapter-name">Make it your own.</span></span><span class="uf-chapter-sign" id="uf-chapter-sign-2" aria-hidden="true">+</span></button>
+      <div class="uf-chapter-fold" id="uf-chapter-content-2" inert><div class="uf-chapter-content"><div class="uf-chapter-spread"><div class="uf-chapter-detail">A point of view.<br>A mark only you make.<span class="uf-chapter-page">P. 038—055</span></div><div class="uf-index-type" aria-hidden="true">Aa</div></div></div></div>
+     </div>
+     <div class="uf-index-bottom"><span>Three ways into the work.</span><span class="uf-mono" id="uf-index-page">004 / 055</span></div>
+    </div>
+    <div class="uf-foot"><span id="uf-index-status" aria-live="polite">Chapter 01 · Start with a feeling.</span><span class="uf-mono">03—04</span></div>
+   </div>
+  </div>
+ </section>
+
+ <section data-variant="Press" aria-label="Press deliberate confirmation component" id="uf-press-variant" hidden>
+  <div class="uf-stage">
+   <div class="uf uf-press">
+    <div class="uf-top"><div class="uf-name"><span class="uf-number">04</span> Press</div><div class="uf-category">Confirmation</div></div>
+    <div class="uf-panel uf-press-panel" id="uf-press-panel" data-sealed="false">
+     <div class="uf-receipt">
+      <div class="uf-receipt-top"><span>STUDIO ARCHIVE</span><span>Nº 028</span></div>
+      <h3>Good to keep.</h3><div class="uf-receipt-sub">A small collection, finished.</div>
+      <div class="uf-receipt-rule"></div>
+      <div class="uf-receipt-row"><span>Collection</span><span>Sun studies</span></div>
+      <div class="uf-receipt-row"><span>Selected pieces</span><span>08</span></div>
+      <div class="uf-receipt-row"><span>Edition</span><span>001</span></div>
+      <div class="uf-stamp-slot"><span class="uf-awaiting">AWAITING YOUR MARK</span><div class="uf-stamp" aria-hidden="true"><i data-lucide="check" aria-hidden="true"></i> SEALED</div></div>
+     </div>
+     <div class="uf-press-controls">
+      <button type="button" class="uf-hold cursor-interaction" id="uf-hold" aria-describedby="uf-press-hint" data-holding="false"><span class="uf-hold-fill" id="uf-hold-fill"></span><span class="uf-hold-content"><i data-lucide="fingerprint" aria-hidden="true"></i><span id="uf-hold-label">Hold to seal</span></span></button>
+      <button type="button" class="uf-undo cursor-interaction" id="uf-unseal" aria-label="Undo seal" disabled><i data-lucide="undo-2" aria-hidden="true"></i></button>
+     </div>
+     <div class="uf-press-hint" id="uf-press-hint">Hold for 1 second. Release to cancel.</div>
+    </div>
+    <div class="uf-foot"><span id="uf-press-status" aria-live="polite">A deliberate finish.</span><span class="uf-mono">04—04</span></div>
+   </div>
+  </div>
+ </section>
+</div>
+
+<script>
+(()=>{
+ const root=document.getElementById('ui-four-fresh');
+ if(!root)return;
+ const get=id=>document.getElementById(id);
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const titles=['Other Side','Common Ground','Soft Signal'];
+ const collection=new Set();
+ let trayOpen=false;
+ function renderPocket(){
+  get('uf-pocket-count').textContent=String(collection.size);
+  get('uf-pocket-sub').textContent=collection.size?`${collection.size} ${collection.size===1?'piece':'pieces'} collected`:'Your next collection starts here';
+  get('uf-tray-empty').hidden=collection.size>0;
+  titles.forEach((title,i)=>{
+   const saved=collection.has(i),button=get('uf-collect-'+i);
+   get('uf-poster-'+i).dataset.saved=String(saved);
+   button.disabled=saved;
+   button.children[0].textContent=saved?'✓':'+';
+   button.children[1].textContent=saved?'Collected':'Collect';
+   button.setAttribute('aria-label',`${saved?'Collected':'Collect'} ${title}`);
+   get('uf-tray-row-'+i).hidden=!saved;
+  });
+ }
+ function flyToPocket(i){
+  if(reduced.matches)return;
+  const source=get('uf-poster-art-'+i),stage=get('uf-pocket-stage'),target=get('uf-tray');
+  if(!source.animate)return;
+  const a=source.getBoundingClientRect(),b=target.getBoundingClientRect(),s=stage.getBoundingClientRect();
+  const ghost=source.cloneNode(true);
+  ghost.removeAttribute('id');ghost.removeAttribute('role');ghost.setAttribute('aria-hidden','true');
+  ghost.classList.add('uf-ghost');
+  Object.assign(ghost.style,{left:`${a.left-s.left}px`,top:`${a.top-s.top}px`,width:`${a.width}px`,height:`${a.height}px`});
+  stage.append(ghost);
+  const dx=b.left+b.width/2-a.left-a.width/2,dy=b.top+16-a.top-a.height/2;
+  const animation=ghost.animate([{translate:'0 0',scale:'1',rotate:'0deg',opacity:1},{translate:`${dx*.6}px ${dy*.3-25}px`,scale:'.8',rotate:'-7deg',opacity:1,offset:.45},{translate:`${dx}px ${dy}px`,scale:'.12',rotate:'0deg',opacity:0}],{duration:620,easing:'cubic-bezier(.22,.7,.2,1)'});
+  animation.finished.then(()=>ghost.remove()).catch(()=>ghost.remove());
+ }
+ titles.forEach((title,i)=>{
+  get('uf-collect-'+i).addEventListener('click',()=>{
+   if(collection.has(i))return;
+   flyToPocket(i);collection.add(i);renderPocket();
+   get('uf-pocket-status').textContent=`${title} added to Moodboard.`;
+   get('uf-tray-toggle').focus({preventScroll:true});
+  });
+  get('uf-remove-'+i).addEventListener('click',()=>{
+   collection.delete(i);renderPocket();get('uf-pocket-status').textContent=`${title} removed.`;
+   setTray(false);get('uf-collect-'+i).focus({preventScroll:true});
+  });
+ });
+ function setTray(open){
+  const content=get('uf-tray-content'),toggle=get('uf-tray-toggle');
+  // Return focus before hiding a focused item from the accessibility tree.
+  if(!open&&content.contains(document.activeElement))toggle.focus({preventScroll:true});
+  trayOpen=open;
+  toggle.setAttribute('aria-expanded',String(open));
+  get('uf-tray').dataset.open=String(open);
+  content.dataset.open=String(open);
+  content.setAttribute('aria-hidden',String(!open));
+  content.inert=!open;
+  get('uf-posters').inert=open;
+ }
+ get('uf-tray-toggle').addEventListener('click',()=>setTray(!trayOpen));
+ get('uf-tray').addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&trayOpen){
+   e.preventDefault();e.stopPropagation();setTray(false);
+   get('uf-tray-toggle').focus({preventScroll:true});
+  }
+ });
+ get('uf-pocket-stage').addEventListener('pointerdown',e=>{
+  if(trayOpen&&!get('uf-tray').contains(e.target))setTray(false);
+ });
+
+ const chapters=['Start with a feeling.','Find the rhythm.','Make it your own.'];
+ let activeChapter=0;
+ function chooseChapter(i){
+  activeChapter=i;
+  chapters.forEach((title,j)=>{
+   const open=j===i;
+   get('uf-chapter-'+j).dataset.open=String(open);
+   get('uf-chapter-button-'+j).setAttribute('aria-expanded',String(open));
+   get('uf-chapter-sign-'+j).textContent=open?'−':'+';
+   get('uf-chapter-content-'+j).inert=!open;
+  });
+  get('uf-index-page').textContent=i<0?'— / 055':['004 / 055','020 / 055','038 / 055'][i];
+  get('uf-index-status').textContent=i<0?'Choose a chapter.':`Chapter 0${i+1} · ${chapters[i]}`;
+ }
+ chapters.forEach((title,i)=>{
+  get('uf-chapter-button-'+i).addEventListener('click',()=>chooseChapter(activeChapter===i?-1:i));
+  get('uf-chapter-button-'+i).addEventListener('keydown',e=>{
+   const steps={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1};
+   let next;
+   if(e.key in steps)next=(i+steps[e.key]+3)%3;
+   else if(e.key==='Home')next=0;else if(e.key==='End')next=2;else return;
+   e.preventDefault();chooseChapter(next);get('uf-chapter-button-'+next).focus({preventScroll:true});
+  });
+ });
+
+ const spool=get('uf-spool-root'),main=get('uf-film-main'),scrub=get('uf-film-scrub');
+ const canvases=[main,...Array.from({length:6},(_,i)=>get('uf-film-thumb-'+i))];
+ const savedFrames=new Set();
+ let frame=24,playing=false,playRequest=0,playStart=0,playFrom=0;
+ let palette={};
+ function readPalette(){
+  for(const name of ['sky','sky-hi','floor','wall','wall-hi','wall-side','sun','ball','ball-hi','ball-dark','cast']){
+   const probe=document.createElement('span');probe.style.color=`var(--u-${name})`;spool.append(probe);
+   palette[name]=getComputedStyle(probe).color;probe.remove();
+  }
+ }
+ function archPath(ctx,x,y,w,h){
+  const r=w/2;ctx.moveTo(x,y+h);ctx.lineTo(x,y+r);ctx.arc(x+r,y+r,r,Math.PI,Math.PI*2);ctx.lineTo(x+w,y+h);ctx.closePath();
+ }
+ function polygon(ctx,points,fill){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fillStyle=fill;ctx.fill();}
+ function paint(canvas,t){
+  const rect=canvas.getBoundingClientRect();if(rect.width<2||rect.height<2)return;
+  const dpr=Math.min(devicePixelRatio||1,2),width=Math.round(rect.width*dpr),height=Math.round(rect.height*dpr);
+  if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
+  const ctx=canvas.getContext('2d');if(!ctx)return;
+  ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,width,height);ctx.scale(width/600,height/310);
+  const sunX=90+420*t,sunY=47-25*Math.sin(t*Math.PI),shift=(t-.5)*125;
+  const sky=ctx.createLinearGradient(0,0,0,310);sky.addColorStop(0,palette.sky);sky.addColorStop(1,palette['sky-hi']);ctx.fillStyle=sky;ctx.fillRect(0,0,600,310);
+  ctx.fillStyle=palette.sun;ctx.beginPath();ctx.arc(sunX,sunY,24,0,Math.PI*2);ctx.fill();
+  polygon(ctx,[[0,182],[600,145],[600,310],[0,310]],palette.floor);
+  polygon(ctx,[[141,202],[390,164],[550-shift,278],[270-shift,310],[91,310]],palette.cast);
+  polygon(ctx,[[147,34],[334,45],[334,222],[147,206]],palette['wall-side']);
+  ctx.save();ctx.beginPath();archPath(ctx,215,68,92,160);ctx.clip();ctx.fillStyle=sky;ctx.fillRect(215,68,92,160);
+  polygon(ctx,[[215,172],[307,165],[307,228],[215,228]],palette.floor);ctx.restore();
+  ctx.save();ctx.beginPath();ctx.rect(162,14,209,204);archPath(ctx,215,68,92,160);ctx.clip('evenodd');
+  const wall=ctx.createLinearGradient(165,0,360,170);wall.addColorStop(0,palette['wall-hi']);wall.addColorStop(1,palette.wall);ctx.fillStyle=wall;ctx.fillRect(155,8,224,215);
+  polygon(ctx,[[160,14],[211,14],[331+shift*.4,222],[278+shift*.4,222]],palette['wall-hi']);
+  ctx.restore();
+  polygon(ctx,[[371,14],[391,31],[391,215],[371,218]],palette['wall-side']);
+  polygon(ctx,[[162,14],[371,14],[391,31],[182,31]],palette['wall-hi']);
+  ctx.save();ctx.beginPath();archPath(ctx,215,68,92,155);ctx.clip();
+  polygon(ctx,[[215,72],[234,68],[234,209],[215,220]],palette['wall-side']);
+  polygon(ctx,[[215,200],[307,200],[330-shift*.3,224],[207-shift*.2,242]],palette['wall-hi']);ctx.restore();
+  for(let i=0;i<5;i++){
+   const x=360+i*22,y=225-i*13;
+   polygon(ctx,[[x,y],[x+73,y-10],[x+87,y-1],[x+14,y+10]],palette['wall-hi']);
+   polygon(ctx,[[x+14,y+10],[x+87,y-1],[x+87,y+17],[x+14,y+28]],palette.wall);
+   polygon(ctx,[[x,y],[x+14,y+10],[x+14,y+28],[x,y+18]],palette['wall-side']);
+  }
+  ctx.save();ctx.translate(127-shift*.28,266);ctx.rotate(-.09-shift/520);ctx.scale(1,.24);ctx.beginPath();ctx.ellipse(0,0,56+Math.abs(shift*.3),36,0,0,Math.PI*2);ctx.fillStyle=palette.cast;ctx.fill();ctx.restore();
+  const sphere=ctx.createRadialGradient(102+shift*.19,222,3,122,241,41);sphere.addColorStop(0,palette['ball-hi']);sphere.addColorStop(.5,palette.ball);sphere.addColorStop(1,palette['ball-dark']);
+  ctx.fillStyle=sphere;ctx.beginPath();ctx.arc(122,242,35,0,Math.PI*2);ctx.fill();
+  ctx.globalAlpha=.09;ctx.fillStyle=palette['wall-side'];
+  for(let i=0;i<1800;i++){const x=(i*113.71)%600,y=(i*71.17)%310;ctx.fillRect(x,y,.5,.5);}ctx.globalAlpha=1;
+ }
+ function setPlayButton(){
+  get('uf-film-play').setAttribute('aria-pressed',String(playing));get('uf-film-play').setAttribute('aria-label',playing?'Pause study':'Play study');
+  document.querySelector('.uf-play-left').setAttribute('d',playing?'M6 4 L10 4 L10 20 L6 20 Z':'M6 3 L12 6.6 L12 17.4 L6 21 Z');
+  document.querySelector('.uf-play-right').setAttribute('d',playing?'M14 4 L18 4 L18 20 L14 20 Z':'M12 6.6 L21 12 L21 12 L12 17.4 Z');
+ }
+ function stopFilm(){playing=false;cancelAnimationFrame(playRequest);setPlayButton();}
+ function renderFrame(){
+  scrub.value=String(frame);scrub.setAttribute('aria-valuetext',`Frame ${frame} of 191`);
+  get('uf-film-frame').textContent='F.'+String(frame).padStart(3,'0');
+  get('uf-film-time').textContent='00:'+String(Math.floor(frame/24)).padStart(2,'0');
+  get('uf-film-playhead').style.left=`${1+frame/191*98}%`;
+  const saved=savedFrames.has(frame);get('uf-saved-mark').hidden=!saved;get('uf-film-save').setAttribute('aria-pressed',String(saved));
+  get('uf-film-save').setAttribute('aria-label',saved?'Remove saved frame':'Save this frame');get('uf-save-text').textContent=saved?'Kept':'Keep frame';
+  get('uf-film-prev').disabled=frame===0;get('uf-film-next').disabled=frame===191;
+  paint(main,frame/191);
+ }
+ function setFrame(value){frame=Math.max(0,Math.min(191,Math.round(value)));renderFrame();}
+ function tickFilm(now){
+  if(!playing)return;
+  if(get('uf-spool-variant').hidden){stopFilm();return;}
+  setFrame(playFrom+Math.floor((now-playStart)*24/1000));
+  if(frame>=191){stopFilm();get('uf-film-status').textContent='End of study. Replay or keep this frame.';return;}
+  playRequest=requestAnimationFrame(tickFilm);
+ }
+ get('uf-film-play').addEventListener('click',()=>{
+  if(playing){stopFilm();get('uf-film-status').textContent=`Paused at frame ${frame}.`;return;}
+  if(frame===191)setFrame(0);
+  playing=true;playFrom=frame;playStart=performance.now();setPlayButton();
+  get('uf-film-status').textContent='Playing sunlight study.';playRequest=requestAnimationFrame(tickFilm);
+ });
+ scrub.addEventListener('input',()=>{stopFilm();setFrame(Number(scrub.value));});
+ scrub.addEventListener('change',()=>{get('uf-film-status').textContent=`Frame ${frame} selected.`;});
+ get('uf-film-prev').addEventListener('click',()=>{stopFilm();setFrame(frame-1);get('uf-film-status').textContent=`Frame ${frame} selected.`;});
+ get('uf-film-next').addEventListener('click',()=>{stopFilm();setFrame(frame+1);get('uf-film-status').textContent=`Frame ${frame} selected.`;});
+ get('uf-film-save').addEventListener('click',()=>{
+  stopFilm();const existed=savedFrames.has(frame);existed?savedFrames.delete(frame):savedFrames.add(frame);renderFrame();
+  get('uf-film-status').textContent=existed?`Frame ${frame} removed. ${savedFrames.size} kept.`:`Frame ${frame} kept. ${savedFrames.size} saved in this study.`;
+ });
+ function redrawFilm(){readPalette();renderFrame();canvases.slice(1).forEach((canvas,i)=>paint(canvas,i/5));}
+ let redrawRequest=0;
+ function requestRedraw(){cancelAnimationFrame(redrawRequest);redrawRequest=requestAnimationFrame(redrawFilm);}
+ if(typeof ResizeObserver!=='undefined'){const resize=new ResizeObserver(requestRedraw);canvases.forEach(canvas=>resize.observe(canvas));}
+ const themeObserver=new MutationObserver(requestRedraw);themeObserver.observe(document.documentElement,{attributes:true,attributeFilter:['class','style','data-theme']});
+ matchMedia('(prefers-color-scheme: dark)').addEventListener('change',requestRedraw);
+ redrawFilm();
+
+ const hold=get('uf-hold');
+ let sealed=false,holding=false,holdStart=0,holdRequest=0,holdingPointer=null;
+ function cancelHold(announce=false){
+  if(!holding)return;
+  holding=false;holdingPointer=null;cancelAnimationFrame(holdRequest);hold.dataset.holding='false';get('uf-hold-fill').style.transform='scaleX(0)';get('uf-hold-label').textContent='Hold to seal';
+  if(announce)get('uf-press-status').textContent='Released. Nothing sealed.';
+ }
+ function seal(){
+  cancelHold();sealed=true;get('uf-press-panel').dataset.sealed='true';hold.disabled=true;get('uf-hold-label').textContent='Collection sealed';get('uf-unseal').disabled=false;
+  get('uf-press-hint').textContent='Marked as complete. You can still undo.';
+  get('uf-press-status').textContent='Sun studies sealed. Eight pieces kept together.';
+  get('uf-unseal').focus({preventScroll:true});
+ }
+ function tickHold(now){
+  if(!holding)return;
+  if(get('uf-press-variant').hidden){cancelHold();return;}
+  const progress=Math.min(1,(now-holdStart)/1000);
+  get('uf-hold-fill').style.transform=`scaleX(${progress})`;
+  if(progress>=1){seal();return;}
+  holdRequest=requestAnimationFrame(tickHold);
+ }
+ function beginHold(){if(sealed||holding)return;hold.dataset.confirm='false';holding=true;holdStart=performance.now();hold.dataset.holding='true';get('uf-hold-label').textContent='Keep holding…';get('uf-press-status').textContent='Holding. Release to cancel.';holdRequest=requestAnimationFrame(tickHold);}
+ hold.addEventListener('pointerdown',e=>{if(e.button!==0||sealed)return;e.preventDefault();hold.focus({preventScroll:true});holdingPointer=e.pointerId;hold.setPointerCapture(e.pointerId);beginHold();});
+ hold.addEventListener('pointermove',e=>{if(!holding||e.pointerId!==holdingPointer)return;const r=hold.getBoundingClientRect();if(e.clientX<r.left-8||e.clientX>r.right+8||e.clientY<r.top-8||e.clientY>r.bottom+8)cancelHold(true);});
+ for(const name of ['pointerup','pointercancel','lostpointercapture'])hold.addEventListener(name,()=>cancelHold(true));
+ hold.addEventListener('keydown',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();if(!e.repeat)beginHold();}else if(e.key==='Escape'){e.preventDefault();cancelHold(true);hold.dataset.confirm='false';if(!sealed)get('uf-hold-label').textContent='Hold to seal';}});
+ hold.addEventListener('keyup',e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();cancelHold(true);}});
+ hold.addEventListener('blur',()=>{cancelHold();hold.dataset.confirm='false';if(!sealed)get('uf-hold-label').textContent='Hold to seal';});
+ hold.addEventListener('click',e=>{
+  if(e.detail===0&&!sealed&&!holding){
+   if(hold.dataset.confirm==='true'){hold.dataset.confirm='false';seal();}
+   else{hold.dataset.confirm='true';get('uf-hold-label').textContent='Activate again to seal';get('uf-press-status').textContent='Activate once more to confirm the seal.';}
+  }
+ });
+ get('uf-unseal').addEventListener('click',()=>{
+  sealed=false;holding=false;hold.dataset.confirm='false';get('uf-press-panel').dataset.sealed='false';hold.disabled=false;get('uf-hold-label').textContent='Hold to seal';get('uf-unseal').disabled=true;get('uf-hold-fill').style.transform='scaleX(0)';
+  get('uf-press-hint').textContent='Hold for 1 second. Release to cancel.';get('uf-press-status').textContent='Seal undone. Your collection is open.';hold.focus({preventScroll:true});
+ });
+ document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelHold();stopFilm();}});
+ window.addEventListener('blur',()=>{cancelHold(true);stopFilm();});
+ document.getElementById('study-select').addEventListener('change',()=>{cancelHold(true);stopFilm();});
+})();
+</script>
+<script>
+const params=new URLSearchParams(location.search);
+const select=document.getElementById('study-select');
+const names=['Pocket','Spool','Index','Press'];
+select.value=names.includes(params.get('component'))?params.get('component'):'Press';
+function chooseStudy(){document.querySelectorAll('[data-variant]').forEach(e=>e.hidden=e.dataset.variant!==select.value);document.title=select.value+' — Optical UI';}
+select.addEventListener('change',chooseStudy);chooseStudy();
+if(params.has('embedded')){
+ window.addEventListener('keydown',event=>{if(event.key==='Escape'&&!event.defaultPrevented&&parent!==window)parent.postMessage({type:'optical-close'},location.origin);});
+ document.getElementById('study-navigation').hidden=true;
+ document.documentElement.dataset.embedded='true';
+ document.querySelectorAll('.uf-top').forEach(heading=>heading.hidden=true);
+ // Fit the complete object after responsive spacing has been applied. No nested scroll area.
+ const fit=()=>document.querySelectorAll('[data-variant]:not([hidden]) .uf').forEach(card=>{
+  const stage=card.parentElement;
+  const scale=Math.min(1,Math.max(0,stage.clientHeight-24)/Math.max(1,card.offsetHeight));
+  card.style.setProperty('--fit',String(scale));
+ });
+ const observer=new ResizeObserver(fit);
+ document.querySelectorAll('.uf,.uf-stage').forEach(e=>observer.observe(e));
+ window.addEventListener('resize',fit);
+ select.addEventListener('change',()=>requestAnimationFrame(fit));
+ fit();
+}
+const icons={'chevron-up':'m6 15 6-6 6 6','skip-back':'M5 4v16M19 5 7 12l12 7Z','skip-forward':'M19 4v16M5 5l12 7-12 7Z','play':'m7 4 14 8-14 8Z','pause':'M8 4v16M16 4v16','bookmark':'M6 3h12v18l-6-4-6 4Z','bookmark-check':'M6 3h12v18l-6-4-6 4ZM9 9l2 2 4-4','check':'m5 12 4 4L19 6','undo-2':'M9 5 4 10l5 5M4 10h10a6 6 0 0 1 0 12','fingerprint':'M5 10a7 7 0 0 1 14 0M8 10a4 4 0 0 1 8 0v4m-4-7v6c0 4-1 6-3 8M5 14c0 2-.5 4-1 5m15-5c0 3-1 6-2 8m-3-5-1 5'};
+document.querySelectorAll('[data-lucide]').forEach(e=>{const n=e.getAttribute('data-lucide');e.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="'+(icons[n]||icons.check)+'"/></svg>';});
+</script></body></html>
+
+<script>
+(function(){
+ function apply(value){
+  if(!value||typeof value.hue!=='number')return;
+  // Keep the embedded surface in the shared light-paper palette.
+  var h=Math.min(360,Math.max(0,value.hue)),s=Math.min(90,Math.max(0,Number(value.saturation)||0));
+  var r=typeof value.radius==='number'&&Number.isFinite(value.radius)?Math.round(Math.min(24,Math.max(2,value.radius))):20;
+  var tone=24,accent='hsl('+h+' '+s+'% '+tone+'%)',bright='hsl('+h+' '+s+'% 57%)';
+  var l=tone/100,channels=[0,8,4].map(function(o){var k=(o+h/30)%12,c=l-s/100*Math.min(l,1-l)*Math.max(-1,Math.min(k-3,9-k,1));return c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4);});
+  var ink=channels[0]*.2126+channels[1]*.7152+channels[2]*.0722>.179?'#10110f':'#ffffff';
+  document.documentElement.style.colorScheme='light';
+  document.body.style.background='color-mix(in oklab,'+accent+' 3%,#fbfaf6)';
+  document.querySelectorAll('#ui-four-fresh .uf').forEach(function(el){
+   el.style.setProperty('--u-radius',r+'px');el.style.setProperty('--u-bright',bright);el.style.setProperty('--u-orange',accent);el.style.setProperty('--u-action-ink',ink);
+   el.style.setProperty('--u-sage','color-mix(in oklab,'+accent+' 12%,#f4f4e9)');
+   el.style.setProperty('--u-bg','color-mix(in oklab,'+accent+' 9%,#f7f7ef)');
+   el.style.setProperty('--u-paper','color-mix(in oklab,'+accent+' 1%,#fffefa)');
+   el.style.setProperty('--u-ink','color-mix(in oklab,'+accent+' 6%,#30332e)');
+   el.style.setProperty('--u-muted','color-mix(in oklab,'+accent+' 6%,#60665d)');
+   el.style.setProperty('--u-line','color-mix(in oklab,'+accent+' 14%,#e5e5dc)');
+   el.style.setProperty('--u-ball',bright);el.style.setProperty('--u-wall',bright);el.style.setProperty('--u-seal',accent);el.style.setProperty('--u-accent',accent);
+  });
+  document.querySelectorAll('.uf-chapter').forEach(function(el,i){el.style.setProperty('--chapter-bg','color-mix(in oklab,'+accent+' '+(12+i*8)+'%,#f6f3e3)');el.style.setProperty('--chapter-ink',accent);});
+ }
+ window.addEventListener('message',function(e){if(e.origin===location.origin&&e.source===parent&&e.data&&e.data.type==='optical-theme')apply(e.data.theme);});
+ var fallback={hue:18,saturation:63,radius:20};
+ try{apply(JSON.parse(localStorage.getItem('optical-theme')||'null')||fallback);}catch(e){apply(fallback);}
+})();
+</script>
+
+<style>
+#ui-four-fresh .uf .uf-hold:not(:disabled){background:var(--u-seal,light-dark(#753b2d,#c26c51));color:var(--u-action-ink,#fffdf5);box-shadow:inset 0 1px #ffffff55,0 4px 0 color-mix(in oklab,var(--u-seal,#753b2d),#000 30%),0 7px 11px #48281928}
+#ui-four-fresh .uf .uf-hold[data-holding=true]{box-shadow:inset 0 1px #ffffff55,0 1px 0 color-mix(in oklab,var(--u-seal,#753b2d),#000 30%)}
+</style>
+
+<style>
+#ui-four-fresh .uf-play-morph{fill:currentColor;stroke:none}
+#ui-four-fresh .uf-play-morph path{transition:d .32s cubic-bezier(.22,1,.36,1)}
+#ui-four-fresh .uf-play-left{d:path('M6 3 L12 6.6 L12 17.4 L6 21 Z')}
+#ui-four-fresh .uf-play-right{d:path('M12 6.6 L21 12 L21 12 L12 17.4 Z')}
+#ui-four-fresh .uf-play[aria-pressed=true] .uf-play-left{d:path('M6 4 L10 4 L10 20 L6 20 Z')}
+#ui-four-fresh .uf-play[aria-pressed=true] .uf-play-right{d:path('M14 4 L18 4 L18 20 L14 20 Z')}
+#ui-four-fresh .uf .uf-play{transition:border-radius .35s,background .2s; background:var(--u-orange);color:var(--u-action-ink,#fff)}
+#ui-four-fresh .uf .uf-play[aria-pressed=true]{border-radius:50%}
+#ui-four-fresh .uf .uf-hold{transition:border-radius .4s,background .2s,box-shadow .2s,transform .2s}
+#ui-four-fresh .uf .uf-hold[data-holding=true],#ui-four-fresh .uf-press-panel[data-sealed=true] .uf-hold{border-radius:28px}
+#ui-four-fresh .uf .uf-collect{transition:border-radius .3s,background .2s;}
+#ui-four-fresh .uf-poster[data-saved=true] .uf-collect{border-radius:22px;background:var(--u-sage)}
+@media(prefers-reduced-motion:reduce){#ui-four-fresh .uf-play-morph path,#ui-four-fresh .uf .uf-play,#ui-four-fresh .uf .uf-hold,#ui-four-fresh .uf .uf-collect{transition:none}}
+</style>

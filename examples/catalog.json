@@ -1,0 +1,302 @@
+[
+  {
+    "id": "button",
+    "name": "Button",
+    "type": "control"
+  },
+  {
+    "id": "icon-button",
+    "name": "Icon button",
+    "type": "control"
+  },
+  {
+    "id": "button-group",
+    "name": "Button group",
+    "type": "control"
+  },
+  {
+    "id": "switch",
+    "name": "Switch",
+    "type": "control"
+  },
+  {
+    "id": "checkbox",
+    "name": "Checkbox",
+    "type": "control"
+  },
+  {
+    "id": "radio-group",
+    "name": "Radio group",
+    "type": "control"
+  },
+  {
+    "id": "slider",
+    "name": "Slider",
+    "type": "control"
+  },
+  {
+    "id": "range-slider",
+    "name": "Range slider",
+    "type": "control"
+  },
+  {
+    "id": "text-field",
+    "name": "Text field",
+    "type": "control"
+  },
+  {
+    "id": "textarea",
+    "name": "Text area",
+    "type": "control"
+  },
+  {
+    "id": "select",
+    "name": "Select",
+    "type": "control"
+  },
+  {
+    "id": "combobox",
+    "name": "Combobox",
+    "type": "control"
+  },
+  {
+    "id": "number-field",
+    "name": "Number field",
+    "type": "control"
+  },
+  {
+    "id": "search-field",
+    "name": "Search field",
+    "type": "control"
+  },
+  {
+    "id": "material-pocket",
+    "name": "Pocket",
+    "type": "pattern"
+  },
+  {
+    "id": "material-spool",
+    "name": "Spool",
+    "type": "pattern"
+  },
+  {
+    "id": "material-index",
+    "name": "Index",
+    "type": "pattern"
+  },
+  {
+    "id": "material-press",
+    "name": "Press",
+    "type": "pattern"
+  },
+  {
+    "id": "optics",
+    "name": "Optics",
+    "type": "pattern"
+  },
+  {
+    "id": "instrument",
+    "name": "Instrument",
+    "type": "pattern"
+  },
+  {
+    "id": "folio",
+    "name": "Folio",
+    "type": "pattern"
+  },
+  {
+    "id": "contour",
+    "name": "Contour",
+    "type": "pattern"
+  },
+  {
+    "id": "trace",
+    "name": "Trace",
+    "type": "pattern"
+  },
+  {
+    "id": "field",
+    "name": "Field",
+    "type": "pattern"
+  },
+  {
+    "id": "context",
+    "name": "Context",
+    "type": "pattern"
+  },
+  {
+    "id": "interrupt",
+    "name": "Interrupt",
+    "type": "pattern"
+  },
+  {
+    "id": "branch",
+    "name": "Branch",
+    "type": "pattern"
+  },
+  {
+    "id": "intent",
+    "name": "Intent",
+    "type": "pattern"
+  },
+  {
+    "id": "evidence",
+    "name": "Evidence",
+    "type": "pattern"
+  },
+  {
+    "id": "handoff",
+    "name": "Handoff",
+    "type": "pattern"
+  },
+  {
+    "id": "context-fan",
+    "name": "Context fan",
+    "type": "pattern"
+  },
+  {
+    "id": "branch-graph",
+    "name": "Branch graph",
+    "type": "pattern"
+  },
+  {
+    "id": "tabs",
+    "name": "Tabs",
+    "type": "control"
+  },
+  {
+    "id": "segmented-control",
+    "name": "Segmented control",
+    "type": "control"
+  },
+  {
+    "id": "accordion",
+    "name": "Accordion",
+    "type": "control"
+  },
+  {
+    "id": "breadcrumbs",
+    "name": "Breadcrumbs",
+    "type": "control"
+  },
+  {
+    "id": "pagination",
+    "name": "Pagination",
+    "type": "control"
+  },
+  {
+    "id": "data-table",
+    "name": "Data table",
+    "type": "control"
+  },
+  {
+    "id": "command-menu",
+    "name": "Command menu",
+    "type": "control"
+  },
+  {
+    "id": "toast",
+    "name": "Toast",
+    "type": "control"
+  },
+  {
+    "id": "alert",
+    "name": "Alert",
+    "type": "control"
+  },
+  {
+    "id": "progress",
+    "name": "Progress",
+    "type": "control"
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "type": "control"
+  },
+  {
+    "id": "badge",
+    "name": "Badge",
+    "type": "control"
+  },
+  {
+    "id": "avatar",
+    "name": "Avatar",
+    "type": "control"
+  },
+  {
+    "id": "tooltip",
+    "name": "Tooltip",
+    "type": "control"
+  },
+  {
+    "id": "popover",
+    "name": "Popover",
+    "type": "control"
+  },
+  {
+    "id": "dialog",
+    "name": "Dialog",
+    "type": "control"
+  },
+  {
+    "id": "drawer",
+    "name": "Drawer",
+    "type": "control"
+  },
+  {
+    "id": "dropdown-menu",
+    "name": "Dropdown menu",
+    "type": "control"
+  },
+  {
+    "id": "precision-fader",
+    "name": "Precision fader",
+    "type": "signature"
+  },
+  {
+    "id": "step-slider",
+    "name": "Stepped slider",
+    "type": "signature"
+  },
+  {
+    "id": "timeline-wheel",
+    "name": "Timeline wheel",
+    "type": "signature"
+  },
+  {
+    "id": "glass-shutter",
+    "name": "Glass shutter",
+    "type": "signature"
+  },
+  {
+    "id": "focus-lens",
+    "name": "Focus lens",
+    "type": "signature"
+  },
+  {
+    "id": "contact-sheet",
+    "name": "Contact sheet",
+    "type": "signature"
+  },
+  {
+    "id": "selection-tray",
+    "name": "Selection tray",
+    "type": "signature"
+  },
+  {
+    "id": "collection-stack",
+    "name": "Collection stack",
+    "type": "signature"
+  },
+  {
+    "id": "version-rail",
+    "name": "Version rail",
+    "type": "signature"
+  },
+  {
+    "id": "transform-pad",
+    "name": "Transform pad",
+    "type": "signature"
+  }
+]

@@ -1,0 +1,65 @@
+/* 08 — A shared brief, two answer nodes, one reversible direction. */
+.ui-demo .node-graph {
+  max-width: 560px; border: 0; border-radius: 0; background: transparent; box-shadow: none;
+  --ng-line: var(--opt-line, #c3c7ce);
+}
+.ui-demo .ng-scene { --ng-compact: 0; position: relative; width: 100%; isolation: isolate; }
+.ui-demo .ng-connections { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.ui-demo .ng-connections path { fill: none; stroke: var(--ng-line); stroke-width: 1.5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.ui-demo .ng-connections path.is-kept { stroke: var(--opt-accent, #668371); }
+.ui-demo .ng-brief {
+  position: absolute; top: 0; width: 264px; min-height: 80px; padding: 16px;
+  display: flex; align-items: center; gap: 12px; z-index: 2;
+  border: 1px solid var(--opt-line, #dedfe3); border-radius: 16px; background: var(--opt-raised, #fff);
+  box-shadow: 0 2px 3px #20212403, 0 8px 20px -16px #20212422;
+}
+.ui-demo .ng-brief > div { min-width: 0; }
+.ui-demo .ng-brief-icon { width: 32px; height: 36px; display: grid; place-items: center; flex-shrink: 0; border-radius: 8px; background: var(--opt-wash, #f4f5f6); color: var(--opt-muted, #686f7a); }
+.ui-demo .ng-brief-icon svg { width: 18px; height: 18px; }
+.ui-demo .ng-eyebrow { display: block; margin-bottom: 4px; font-size: .75rem; line-height: 1rem; color: var(--demo-secondary); }
+.ui-demo .ng-brief h2 { font-size: 1rem; line-height: 1.375rem; font-weight: 600; letter-spacing: -.02em; text-wrap: initial; }
+.ui-demo .ng-port { position: absolute; width: 8px; height: 8px; border: 1.5px solid var(--ng-line); background: var(--opt-raised, #fff); border-radius: 50%; z-index: 3; }
+.ui-demo .ng-brief > .ng-port { bottom: -5px; left: calc(50% - 4px); }
+.ui-demo .ng-node {
+  position: absolute; top: 0; left: 0; width: 248px; min-height: 248px; padding: 20px;
+  background: var(--opt-raised, #fff); border: 1px solid var(--opt-line, #dedfe3); border-radius: 16px; z-index: 1;
+  box-shadow: 0 2px 3px #20212403, 0 12px 24px -18px #20212425;
+}
+.ui-demo .ng-node.is-kept { border-color: var(--opt-hover, #aebeb3); }
+.ui-demo .ng-node > .ng-port { top: -5px; left: calc(50% - 4px); }
+.ui-demo .ng-node.is-kept > .ng-port { border-color: var(--opt-accent, #668371); }
+.ui-demo .ng-node-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--opt-ink, #4d535d); font-size: .875rem; line-height: 1.25rem; font-weight: 500; }
+.ui-demo .ng-index { font-size: .75rem; line-height: 1rem; color: var(--opt-muted, #8a8e97); font-variant-numeric: tabular-nums; font-weight: 400; }
+.ui-demo .ng-quote { margin-top: 20px; font-size: 1.375rem; line-height: 1.8125rem; letter-spacing: -.025em; font-weight: 500; text-wrap: pretty; overflow-wrap: break-word; }
+.ui-demo .ng-note { margin-top: 12px; font-size: .875rem; line-height: 1.25rem; color: var(--demo-secondary); }
+.ui-demo .ng-node-footer { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 8px; margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--opt-line, #eeeff1); }
+.ui-demo .ng-node-state { display: inline-flex; align-items: center; gap: 6px; font-size: .75rem; line-height: 1rem; color: var(--demo-secondary); }
+.ui-demo .ng-node-state[aria-hidden='true'] { visibility: hidden; }
+.ui-demo .ng-node-state svg { width: 14px; height: 14px; color: var(--opt-accent, #456653); }
+.ui-demo .ng-keep { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 12px; border-radius: 10px; font-size: .875rem; line-height: 1.25rem; font-weight: 500; background: var(--opt-wash, #f3f4f6); color: var(--opt-ink, #30343b); transition: background-color 120ms ease; }
+.ui-demo .ng-keep svg { width: 16px; height: 16px; }
+.ui-demo .ng-controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 28px; }
+.ui-demo .ng-status { font-size: .75rem; line-height: 1rem; color: var(--demo-secondary); }
+.ui-demo .ng-action { min-width: 168px; }
+.ui-demo .ng-action svg { width: 16px; height: 16px; }
+@media (hover: hover) { .ui-demo .ng-keep:hover { background: var(--opt-hover, #e8ebef); } }
+@container study (max-width: 550px) {
+  .ui-demo .ng-scene { --ng-compact: 1; }
+  .ui-demo .ng-brief { width: min(264px, calc(100% - 28px)); }
+  .ui-demo .ng-node { width: calc(100% - 28px); min-height: 0; }
+  .ui-demo .ng-brief > .ng-port, .ui-demo .ng-node > .ng-port { top: calc(50% - 4px); bottom: auto; left: -5px; }
+  .ui-demo .ng-controls { margin-left: 28px; flex-wrap: wrap; }
+  .ui-demo .ng-action { margin-left: auto; }
+}
+@container study (max-width: 320px) {
+  .ui-demo .ng-node { padding: 16px; }
+  .ui-demo .ng-quote { font-size: 1.25rem; line-height: 1.6875rem; }
+  .ui-demo .ng-controls { gap: 16px; margin-top: 24px; }
+  .ui-demo .ng-status { width: 100%; }
+  .ui-demo .ng-action { width: 100%; min-width: 0; }
+}
+/* Enlarged text gets the full brief width before any words are forced to break. */
+@container study (max-width: 14rem) {
+  .ui-demo .ng-brief-icon { display: none; }
+  .ui-demo .ng-brief h2 { overflow-wrap: anywhere; }
+}

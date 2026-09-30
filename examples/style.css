@@ -1,0 +1,35 @@
+html, body, #root { margin: 0; min-height: 100%; }
+body { background: #f8f6f0; }
+* { box-sizing: border-box; }
+.examples-app { min-height: 100dvh; display: grid; grid-template-columns: 240px 1fr; background: var(--opt-paper); }
+.examples-sidebar { height: 100dvh; position: sticky; top: 0; display: flex; flex-direction: column; padding: 28px 16px 20px; border-right: 1px solid var(--opt-line); }
+.examples-brand { font-size: 22px; letter-spacing: -.025em; text-decoration: none; color: var(--opt-ink); padding: 0 12px 24px; }
+.examples-list { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--opt-line) transparent; display: grid; gap: 2px; }
+.examples-list button { display: flex; align-items: center; gap: 14px; min-height: 42px; padding: 10px 12px; text-align: left; border: 0; border-radius: 8px; background: transparent; color: var(--opt-ink); font-size: 13px; }
+.examples-list button span { font-size: 11px; color: var(--opt-muted); font-variant-numeric: tabular-nums; }
+.examples-list button:hover { background: var(--opt-wash); }
+.examples-list button[aria-current] { background: var(--opt-hover); color: var(--opt-accent); }
+.examples-home { margin: 20px 12px 0; color: var(--opt-muted); font-size: 12px; text-underline-offset: 4px; }
+.examples-mobile-picker { display: none; }
+.examples-main { min-width: 0; padding: 32px 40px; display: flex; flex-direction: column; min-height: 100dvh; }
+.examples-main > header { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+.examples-main h1 { margin: 0; font-size: 24px; line-height: 1.25; font-weight: 400; letter-spacing: -.025em; }
+.examples-main > header > span { color: var(--opt-muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.examples-stage { display: grid; place-items: center; flex: 1; min-width: 0; padding: 40px 0; }
+.examples-stage > .opt-foundation-example { width: 100%; }
+.examples-stage .opt-foundation-example > header { display: none; }
+.examples-stage > .ui-demo { width: 100%; max-width: 720px; background: transparent; }
+.examples-stage iframe { width: 100%; max-width: 720px; height: 580px; border: 0; background: var(--opt-paper); }
+.examples-main > footer { display: flex; justify-content: space-between; gap: 20px; }
+.examples-main > footer a { color: var(--opt-muted); font-size: 12px; text-underline-offset: 4px; }
+@media (max-width: 680px) {
+  .examples-app { display: block; }
+  .examples-sidebar { height: auto; position: static; padding: 20px; border-right: 0; border-bottom: 1px solid var(--opt-line); }
+  .examples-brand { padding: 0 0 20px; }
+  .examples-list, .examples-home { display: none; }
+  .examples-mobile-picker { display: flex; gap: 16px; align-items: center; font-size: 12px; }
+  .examples-mobile-picker select { flex: 1; min-width: 0; border: 1px solid var(--opt-line); background: var(--opt-raised); border-radius: 8px; padding: 12px; }
+  .examples-main { min-height: calc(100dvh - 154px); padding: 24px 18px; }
+  .examples-stage { padding: 36px 0; }
+  .examples-stage iframe { height: 600px; }
+}

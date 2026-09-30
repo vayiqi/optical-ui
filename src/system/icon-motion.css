@@ -1,0 +1,86 @@
+/* State feedback stays inside a fixed, theme-aware button silhouette. */
+.opt-system .opt-icon-button[data-fluid] {
+  --opt-icon-radius: clamp(4px, calc(var(--opt-radius) * 0.6), 16px);
+  width: 64px;
+  min-width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: calc(var(--opt-icon-radius) + 4px);
+  background: transparent;
+  color: var(--opt-accent);
+  box-shadow: none;
+  transform: none;
+  overflow: visible;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.opt-system .opt-icon-button[data-fluid][aria-pressed='true'] {
+  border-radius: calc(var(--opt-icon-radius) + 4px);
+  background: transparent;
+  color: var(--opt-accent);
+}
+.opt-system .opt-icon-button[data-fluid] .opt-button-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.opt-system .opt-icon-button[data-fluid] .opt-button-spinner {
+  display: none;
+}
+.opt-system .opt-icon-button[data-fluid] .opt-icon-surface {
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--opt-icon-radius);
+  pointer-events: none;
+  background: color-mix(
+    in oklab,
+    var(--opt-accent) 8%,
+    var(--opt-paper, #fffaf5)
+  );
+  transition: background 180ms ease;
+}
+.opt-system
+  .opt-icon-button[data-fluid][aria-pressed='true']
+  .opt-icon-surface {
+  background: color-mix(
+    in oklab,
+    var(--opt-accent) 15%,
+    var(--opt-paper, #fffaf5)
+  );
+}
+@media (hover: hover) {
+  .opt-system .opt-icon-button[data-fluid]:hover .opt-icon-surface {
+    background: color-mix(
+      in oklab,
+      var(--opt-accent) 19%,
+      var(--opt-paper, #fffaf5)
+    );
+  }
+}
+.opt-system .opt-icon-button[data-fluid] .opt-icon-state-glyph {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke-width: 1.7;
+  pointer-events: none;
+}
+.opt-system .opt-icon-button[data-fluid]:focus-visible {
+  outline: 2px solid var(--opt-accent);
+  outline-offset: 1px;
+}
+/* Generic hover lift and shadows cannot move or outline this hit target. */
+.opt-system
+  .opt-button.opt-icon-button[data-fluid]:not(:disabled):is(:hover, :active) {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  .opt-system .opt-icon-button[data-fluid] .opt-icon-surface {
+    transition: none;
+  }
+}

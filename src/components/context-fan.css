@@ -1,0 +1,82 @@
+/* References gather within a fixed footprint. */
+.ui-demo .fan-context {
+  max-width: 560px; background: transparent; border: 0; box-shadow: none;
+}
+.ui-demo .fan-deck {
+  --fan-card-width: 184px; --fan-card-height: 248px;
+  --fan-spread: 166; --fan-angle: 7; --fan-lift: 76;
+  --fan-gather-scale: .58; --fan-gather-gap: 40;
+  display: grid; padding: 48px 0 12px; position: relative; isolation: isolate;
+}
+.ui-demo .fan-reference {
+  grid-area: 1 / 1; justify-self: center; width: var(--fan-card-width); height: var(--fan-card-height); min-width: 0;
+  display: grid; grid-template-rows: minmax(0,1fr) auto; position: relative;
+  padding: 6px; border: 1px solid var(--opt-line, #e9e9ed); border-radius: 16px; background: var(--opt-raised, #fff);
+  box-shadow: 0 2px 4px #20212404, 0 12px 24px -12px #20212424;
+  user-select: none; transform-origin: center; will-change: transform;
+}
+.ui-demo .fan-reference:focus-visible { z-index: 4 !important; }
+.ui-demo .fan-art {
+  display: block; min-width: 0; min-height: 10rem; position: relative; overflow: hidden;
+  border-radius: 10px 10px 5px 5px; background: #f5f5f6;
+}
+.ui-demo .fan-art > img { width: 100%; height: 100%; position: absolute; inset: 0; object-position: 50% 58%; }
+.ui-demo .fan-photo:last-child .fan-art > img { object-position: 50% 78%; }
+.ui-demo .fan-note-body { display: flex; flex-direction: column; gap: 20px; padding: 16px 12px; color: #666970; }
+.ui-demo .fan-note-body > span { font-size: var(--demo-body); line-height: 1.375rem; letter-spacing: -.02em; color: #555860; overflow-wrap: anywhere; }
+.ui-demo .fan-caption { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding: 12px 6px 8px; overflow-wrap: anywhere; }
+.ui-demo .fan-caption > strong { font-size: var(--demo-label); line-height: 1.25rem; font-weight: 600; letter-spacing: -.02em; }
+.ui-demo .fan-caption > span { font-size: var(--demo-caption); line-height: 1rem; color: var(--demo-secondary); }
+.ui-demo .fan-selection {
+  position: absolute; top: 12px; right: 12px; display: grid; place-items: center; width: 24px; height: 24px;
+  border: 2px solid #fff; border-radius: 50%; background: var(--opt-paper, #fafafa); color: var(--opt-muted, #60636c);
+  transition: color 140ms ease, background-color 140ms ease;
+}
+.ui-demo .fan-reference:first-child .fan-selection { right: auto; left: 12px; }
+.ui-demo .fan-reference.is-selected .fan-selection { background: var(--opt-accent, #303136); color: var(--opt-on-accent, #fff); }
+.ui-demo .fan-selection > svg { width: 14px; height: 14px; stroke-width: 2.25; }
+.ui-demo .fan-pocket {
+  position: relative; z-index: 5; margin-top: -12px; padding: var(--demo-pad); border: 1px solid var(--demo-line);
+  border-radius: var(--demo-radius); background: var(--opt-raised, #fff);
+  box-shadow: 0 2px 4px #20212403, 0 16px 32px -20px #2021241c;
+}
+.ui-demo .fan-pocket-heading { display: flex; align-items: flex-start; gap: 12px; }
+.ui-demo .fan-location { width: 40px; height: 40px; border-radius: 12px; background: var(--opt-wash, #f2f2f4); color: var(--opt-muted, #686b73); display: grid; place-items: center; flex-shrink: 0; }
+.ui-demo .fan-pocket-heading > div { min-width: 0; }
+.ui-demo .fan-pocket-heading h2 { font-size: var(--demo-title); line-height: 1.625rem; letter-spacing: -.025em; text-wrap: initial; overflow-wrap: anywhere; }
+.ui-demo .fan-subtitle { display: grid; margin-top: 4px; font-size: var(--demo-label); line-height: 1.25rem; color: var(--demo-secondary); }
+.ui-demo .fan-subtitle > span { grid-area: 1 / 1; }
+.ui-demo .fan-subtitle > [aria-hidden='true'] { visibility: hidden; }
+.ui-demo .fan-pocket-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.ui-demo .fan-count { display: inline-flex; align-items: center; gap: 8px; font-size: var(--demo-label); line-height: 1.25rem; color: var(--demo-secondary); }
+.ui-demo .fan-count > svg, .ui-demo .fan-action svg { width: 16px; height: 16px; }
+.ui-demo .fan-action { margin-left: auto; min-width: min(100%, 7.25rem); max-width: 100%; }
+.ui-demo .fan-action-label { display: grid; }
+.ui-demo .fan-action-label > span { grid-area: 1 / 1; }
+.ui-demo .fan-action-label > [aria-hidden='true'] { visibility: hidden; }
+.ui-demo .fan-empty { min-height: 1.25rem; padding-top: 12px; text-align: center; font-size: var(--demo-label); line-height: 1.25rem; color: var(--demo-secondary); }
+@container study (max-width: 380px) {
+  .ui-demo .fan-deck {
+    --fan-card-width: 108px; --fan-card-height: 148px;
+    --fan-spread: 92; --fan-angle: 3; --fan-lift: 24;
+    --fan-gather-scale: .82; --fan-gather-gap: 58;
+  }
+  .ui-demo .fan-reference { grid-template-rows: 1fr; padding: 4px; border-radius: 14px; }
+  .ui-demo .fan-art { min-height: 0; height: 100%; border-radius: 10px; }
+  .ui-demo .fan-caption { display: none; }
+  .ui-demo .fan-reference:first-child .fan-selection,
+  .ui-demo .fan-reference:last-child .fan-selection { display: none; }
+  .ui-demo .fan-note-body { height: 100%; padding: 0; display: grid; place-items: center; }
+  .ui-demo .fan-note-body > span { display: none; }
+  .ui-demo .fan-note-body > svg { width: 20px; height: 20px; }
+  .ui-demo .fan-note .fan-selection { top: 8px; right: 8px; width: 22px; height: 22px; }
+  .ui-demo .fan-pocket-footer { margin-top: 20px; gap: 8px; }
+}
+@media (max-width: 650px) { .ui-demo:has(.fan-context) { padding-block: 20px; } }
+@container study (max-width: 310px) {
+  .ui-demo .fan-deck {
+    --fan-card-width: 92px; --fan-card-height: 128px;
+    --fan-spread: 78; --fan-angle: 2; --fan-lift: 20;
+    --fan-gather-scale: .88; --fan-gather-gap: 50;
+  }
+}
